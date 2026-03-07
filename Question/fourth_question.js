@@ -20,6 +20,9 @@ function reverseString(s) {
 }
 
 /* 
-input :- let s = ["h","e","l","l","o"];
+1 example :- input :- let s = ["h","e","l","l","o"];
 output :- ["o","l","l","e","h"]
+
+2 example :- input :- let s = ["H","a","n","n","a","h"];
+output :- ["h","a","n","n","a","H"]
 */
