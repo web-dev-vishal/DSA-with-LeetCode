@@ -18,3 +18,8 @@ function reverseString(s) {
     }
 
 }
+
+/* 
+input :- let s = ["h","e","l","l","o"];
+output :- ["o","l","l","e","h"]
+*/
