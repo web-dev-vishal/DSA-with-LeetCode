@@ -36,3 +36,19 @@ function atMost(nums, k) {
 
     return count;
 }
+
+/* 
+input :-
+nums = [1,2,1,2,3]
+k = 2 
+
+[1,2]
+[2,1]
+[1,2]
+[2,3]
+[1,2,1]
+[2,1,2]
+[1,2,1,2]
+
+output :- 7
+*/
