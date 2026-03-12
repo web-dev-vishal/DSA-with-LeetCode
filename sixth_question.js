@@ -41,3 +41,10 @@ function search(nums, target) {
     // target not found
     return -1;
 }
+
+/* 
+input :- let nums = [4,5,6,7,0,1,2];
+         let target = 0;
+
+output :- 4         
+*/
