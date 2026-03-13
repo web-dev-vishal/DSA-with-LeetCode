@@ -24,7 +24,13 @@ function countSubstrings(s) {
 }
 
 /*
+1 
 input :- let s = "aaa";
 
 output :- 6 
+
+2
+letcode input :- "abc"
+
+output :- 3
 */
