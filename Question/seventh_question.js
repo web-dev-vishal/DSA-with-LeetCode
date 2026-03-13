@@ -22,3 +22,9 @@ function countSubstrings(s) {
 
     return count;
 }
+
+/*
+input :- let s = "aaa";
+
+output :- 6 
+*/
