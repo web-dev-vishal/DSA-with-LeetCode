@@ -28,3 +28,6 @@ function oddEvenList(head) {
 
     return head;
 }
+/*
+input:- 
+*/
