@@ -373,15 +373,14 @@ Rewire next pointers directly without allocating extra space.
 
 | #  | Verified Detail                                                                 |
 |----|---------------------------------------------------------------------------------|
-| Q1 | Output [1,2] is 1-based. numbers[0]+numbers[1] = 2+7 = 9. Correct.            |
+| Q1 | Output [1,2] is 1-based. numbers[0]+numbers[1] = 2+7 = 9. Correct.             |
 | Q2 | Duplicate skipping works at both i level and pointer level. Correct.           |
-| Q3 | "deeee" -> remove 'd' -> "eeee" is palindrome -> true. Correct.               |
+| Q3 | "deeee" -> remove 'd' -> "eeee" is palindrome -> true. Correct.                |
 | Q4 | Modifies array in-place, no return value (matches LeetCode style). Correct.    |
-| Q5 | atMost(2)=12, atMost(1)=5, exactly(2)=7. Verified manually. Correct.          |
-| Q6 | nums[4]=0 for input [4,5,6,7,0,1,2], target=0 -> output 4. Correct.           |
-| Q7 | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.      |
+| Q5 | atMost(2)=12, atMost(1)=5, exactly(2)=7. Verified manually. Correct.           |
+| Q6 | nums[4]=0 for input [4,5,6,7,0,1,2], target=0 -> output 4. Correct.            |
+| Q7 | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.       |
 | Q8 | Odd/even refers to node position (1-based index), not node value. Correct.     |
-
 ---
 
 ## How to Run
