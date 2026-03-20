@@ -62,4 +62,8 @@ function findLast(nums, target) {
 input :- nums = [1, 2, 2, 2, 3, 4, 5]
 target = 2
 output :- [1, 3]
+
+input :- nums = [5, 7, 7, 8, 8, 10]
+target = 8
+output :- [3, 4]
 */
