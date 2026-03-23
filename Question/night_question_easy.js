@@ -28,11 +28,11 @@ function binarySearch(nums, target, findFirst) {
                 // Move RIGHT to find later occurrence
                 left = mid + 1;
             }
-        } 
+        }
         else if (nums[mid] < target) {
             // Target is on right side
             left = mid + 1;
-        } 
+        }
         else {
             // Target is on left side
             right = mid - 1;
