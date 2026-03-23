@@ -41,3 +41,9 @@ function binarySearch(nums, target, findFirst) {
 
     return result; // return first or last index
 }
+
+/* 
+input :- nums = [1, 2, 2, 2, 3, 4, 5]
+        target = 2
+output :- [1, 3]
+*/
