@@ -11,33 +11,38 @@ Covers: Two Pointers | Sliding Window | Binary Search | Expand from Center | Lin
 DSA Question from LeetCode/
 |
 +-- Question/
-|   +-- first_question.js        ->  Two Sum II           (Two Pointers - detailed)
-|   +-- first_question_easy.js   ->  Two Sum II           (Two Pointers - simplified)
-|   +-- second_question.js       ->  3Sum                 (Sort + Two Pointers)
-|   +-- third_question.js        ->  Valid Palindrome II  (Two Pointers)
-|   +-- fourth_question.js       ->  Reverse String       (Two Pointers - in-place)
-|   +-- fifth_question.js        ->  K Distinct Subarrays (Sliding Window)
-|   +-- sixth_question.js        ->  Search Rotated Array (Binary Search)
-|   +-- seventh_question.js      ->  Palindromic Substrings (Expand from Center)
+|   +-- first_question.js         ->  Two Sum II                    (Two Pointers - detailed)
+|   +-- first_question_easy.js    ->  Two Sum II                    (Two Pointers - simplified)
+|   +-- second_question.js        ->  3Sum                          (Sort + Two Pointers)
+|   +-- third_question.js         ->  Valid Palindrome II           (Two Pointers)
+|   +-- fourth_question.js        ->  Reverse String                (Two Pointers - in-place)
+|   +-- fifth_question.js         ->  K Distinct Subarrays          (Sliding Window)
+|   +-- sixth_question.js         ->  Search in Rotated Array       (Binary Search)
+|   +-- seventh_question.js       ->  Palindromic Substrings        (Expand from Center)
+|   +-- eight_question.js         ->  Odd Even Linked List          (Linked List)
+|   +-- ninth_question.js         ->  Find First & Last Position    (Binary Search - detailed)
+|   +-- ninth_question_easy.js    ->  Find First & Last Position    (Binary Search - simplified)
 |
-+-- eight_question.js            ->  Odd Even Linked List (Linked List)
++-- README.md
 ```
 
 ---
 
 ## Quick Reference Table
 
-| #  | Problem                   | File                      | Technique            | Time     | Space |
-|----|---------------------------|---------------------------|----------------------|----------|-------|
-| 1  | Two Sum II                | first_question.js         | Two Pointers         | O(n)     | O(1)  |
-| 1b | Two Sum II (simplified)   | first_question_easy.js    | Two Pointers         | O(n)     | O(1)  |
-| 2  | 3Sum                      | second_question.js        | Sort + Two Pointers  | O(n^2)   | O(1)  |
-| 3  | Valid Palindrome II        | third_question.js         | Two Pointers         | O(n)     | O(1)  |
-| 4  | Reverse String            | fourth_question.js        | Two Pointers         | O(n)     | O(1)  |
-| 5  | K Distinct Subarrays      | fifth_question.js         | Sliding Window       | O(n)     | O(k)  |
-| 6  | Search in Rotated Array   | sixth_question.js         | Binary Search        | O(log n) | O(1)  |
-| 7  | Palindromic Substrings    | seventh_question.js       | Expand from Center   | O(n^2)   | O(1)  |
-| 8  | Odd Even Linked List      | eight_question.js         | Linked List          | O(n)     | O(1)  |
+| #  | Problem                        | File                       | Technique            | Time     | Space |
+|----|--------------------------------|----------------------------|----------------------|----------|-------|
+| 1  | Two Sum II                     | first_question.js          | Two Pointers         | O(n)     | O(1)  |
+| 1b | Two Sum II (simplified)        | first_question_easy.js     | Two Pointers         | O(n)     | O(1)  |
+| 2  | 3Sum                           | second_question.js         | Sort + Two Pointers  | O(n^2)   | O(1)  |
+| 3  | Valid Palindrome II             | third_question.js          | Two Pointers         | O(n)     | O(1)  |
+| 4  | Reverse String                 | fourth_question.js         | Two Pointers         | O(n)     | O(1)  |
+| 5  | K Distinct Subarrays           | fifth_question.js          | Sliding Window       | O(n)     | O(k)  |
+| 6  | Search in Rotated Array        | sixth_question.js          | Binary Search        | O(log n) | O(1)  |
+| 7  | Palindromic Substrings         | seventh_question.js        | Expand from Center   | O(n^2)   | O(1)  |
+| 8  | Odd Even Linked List           | eight_question.js          | Linked List          | O(n)     | O(1)  |
+| 9  | Find First & Last Position     | ninth_question.js          | Binary Search x2     | O(log n) | O(1)  |
+| 9b | Find First & Last (simplified) | ninth_question_easy.js     | Binary Search x2     | O(log n) | O(1)  |
 
 ---
 
@@ -46,7 +51,7 @@ DSA Question from LeetCode/
 ---
 
 ### 1. Two Sum II — Sorted Array
-Files: Question/first_question.js and Question/first_question_easy.js
+Files: Question/first_question.js  |  Question/first_question_easy.js
 Technique: Two Pointers
 
 Given a sorted array, find two numbers that add up to target. Return their 1-based indices.
@@ -69,12 +74,12 @@ Visual — Pointer Movement:
 
  [  2,   7,  11,  15 ]
   L   R
-  2 + 7  = 9  == 9  ->  return [1, 2]
+  2 + 7  =  9 == 9  ->  return [1, 2]
 ```
 
 Logic:
-- sum < target  ->  move left pointer right  (need a bigger number)
-- sum > target  ->  move right pointer left  (need a smaller number)
+- sum < target  ->  move left right  (need a bigger number)
+- sum > target  ->  move right left  (need a smaller number)
 - sum == target ->  return 1-based indices
 
 Note: first_question_easy.js is the same logic written more concisely, good for quick revision.
@@ -85,7 +90,7 @@ Note: first_question_easy.js is the same logic written more concisely, good for 
 File: Question/second_question.js
 Technique: Sort + Two Pointers
 
-Find all unique triplets in the array that sum to zero. No duplicate triplets allowed in output.
+Find all unique triplets in the array that sum to zero. No duplicate triplets in output.
 
 Example:
 ```
@@ -99,7 +104,7 @@ Sorted: [ -4, -1, -1,  0,  1,  2 ]
 
 Fix i=1, nums[i] = -1
 Remaining: [ -1,  0,  1,  2 ]
-            L              R
+             L              R
 
   -1 + (-1) + 2 = 0  ->  push [-1, -1, 2], skip duplicates
   -1 +  0   + 1 = 0  ->  push [-1,  0, 1], skip duplicates
@@ -132,7 +137,7 @@ Visual:
 
 'd' != 'e'  ->  mismatch found!
 
-Option A: skip L  ->  check "eeee"  ->  palindrome  -> return true
+Option A: skip L  ->  check "eeee"  ->  palindrome  ->  return true
 Option B: skip R  ->  check "deee"  ->  not palindrome
 ```
 
@@ -140,7 +145,7 @@ Logic:
 - Walk inward with two pointers
 - On first mismatch, try skipping left char OR right char
 - If either resulting substring is a palindrome -> return true
-- If no mismatch found at all -> already a palindrome -> return true
+- If no mismatch at all -> already a palindrome -> return true
 
 ---
 
@@ -203,14 +208,14 @@ Visual — atMost(k=2) sliding window:
 ```
 nums = [ 1, 2, 1, 2, 3 ]
 
-right=0: window=[1]         distinct=1 <= 2  ->  count += 1  (total=1)
-right=1: window=[1,2]       distinct=2 <= 2  ->  count += 2  (total=3)
-right=2: window=[1,2,1]     distinct=2 <= 2  ->  count += 3  (total=6)
-right=3: window=[1,2,1,2]   distinct=2 <= 2  ->  count += 4  (total=10)
-right=4: window=[1,2,1,2,3] distinct=3 > 2   ->  shrink left
-         window=[2,1,2,3]   distinct=3 > 2   ->  shrink left
-         window=[1,2,3]     distinct=3 > 2   ->  shrink left
-         window=[2,3]       distinct=2 <= 2  ->  count += 2  (total=12)
+right=0: window=[1]           distinct=1 <= 2  ->  count += 1  (total=1)
+right=1: window=[1,2]         distinct=2 <= 2  ->  count += 2  (total=3)
+right=2: window=[1,2,1]       distinct=2 <= 2  ->  count += 3  (total=6)
+right=3: window=[1,2,1,2]     distinct=2 <= 2  ->  count += 4  (total=10)
+right=4: window=[1,2,1,2,3]   distinct=3 > 2   ->  shrink left
+         window=[2,1,2,3]     distinct=3 > 2   ->  shrink left
+         window=[1,2,3]       distinct=3 > 2   ->  shrink left
+         window=[2,3]         distinct=2 <= 2  ->  count += 2  (total=12)
 
 atMost(2) = 12
 atMost(1) = 5
@@ -303,7 +308,7 @@ Logic:
 ---
 
 ### 8. Odd Even Linked List
-File: eight_question.js
+File: Question/eight_question.js
 Technique: Linked List Pointer Manipulation
 
 Reorder a linked list so all odd-indexed nodes come first, then all even-indexed nodes.
@@ -311,8 +316,8 @@ Index is 1-based (position in list, not node value).
 
 Example:
 ```
-Input:  1 -> 2 -> 3 -> 4 -> 5
-Output: 1 -> 3 -> 5 -> 2 -> 4
+Input:  [1, 2, 3, 4, 5]
+Output: [1, 3, 5, 2, 4]
 ```
 
 Visual:
@@ -321,11 +326,11 @@ Original:
   1  ->  2  ->  3  ->  4  ->  5  ->  null
   odd    even
 
-Step 1: odd.next = 3, odd moves to 3
-        even.next = 4, even moves to 4
+Step 1: odd.next = 3,    odd  moves to 3
+        even.next = 4,   even moves to 4
   1  ->  3  ->  ...      2  ->  4  ->  ...
 
-Step 2: odd.next = 5, odd moves to 5
+Step 2: odd.next = 5,    odd  moves to 5
         even.next = null, even moves to null
   1  ->  3  ->  5        2  ->  4  ->  null
 
@@ -337,6 +342,75 @@ Logic:
 - Save the head of the even list (evenHead)
 - Weave odd and even nodes into two separate chains
 - Connect odd tail to evenHead at the end
+
+---
+
+### 9. Find First and Last Position of Element in Sorted Array
+Files: Question/ninth_question.js  |  Question/ninth_question_easy.js
+Technique: Binary Search (run twice)
+
+Given a sorted array, find the starting and ending index of a target value.
+Return [-1, -1] if target is not found.
+
+Examples:
+```
+Input:  nums = [1, 2, 2, 2, 3, 4, 5],  target = 2
+Output: [1, 3]   ->  first at index 1, last at index 3
+
+Input:  nums = [5, 7, 7, 8, 8, 10],  target = 8
+Output: [3, 4]   ->  first at index 3, last at index 4
+```
+
+Visual — Finding first occurrence of 2 in [1, 2, 2, 2, 3, 4, 5]:
+```
+[ 1, 2, 2, 2, 3, 4, 5 ]
+  L        M           R
+
+nums[M]=2 == target  ->  store result=3, move R left to find earlier
+
+[ 1, 2, 2, 2, 3, 4, 5 ]
+  L  M  R
+
+nums[M]=2 == target  ->  store result=1, move R left to find earlier
+
+[ 1, 2, 2, 2, 3, 4, 5 ]
+  L
+  R
+
+nums[M]=1 < target   ->  move L right
+
+L > R  ->  stop.  First occurrence = 1
+```
+
+Visual — Finding last occurrence of 2 in [1, 2, 2, 2, 3, 4, 5]:
+```
+[ 1, 2, 2, 2, 3, 4, 5 ]
+  L        M           R
+
+nums[M]=2 == target  ->  store result=3, move L right to find later
+
+[ 1, 2, 2, 2, 3, 4, 5 ]
+               L  M  R
+
+nums[M]=4 > target   ->  move R left
+
+[ 1, 2, 2, 2, 3, 4, 5 ]
+               L
+               R
+
+nums[M]=3 > target   ->  move R left
+
+L > R  ->  stop.  Last occurrence = 3
+```
+
+Logic (ninth_question.js — two separate functions):
+- findFirst: standard binary search, but when target found, store index and keep searching LEFT
+- findLast:  standard binary search, but when target found, store index and keep searching RIGHT
+
+Logic (ninth_question_easy.js — single reusable function):
+- binarySearch(nums, target, findFirst) handles both cases with a boolean flag
+- findFirst=true  -> on match, move right left  (search earlier)
+- findFirst=false -> on match, move left right  (search later)
 
 ---
 
@@ -356,6 +430,7 @@ Maintain a dynamic window [left, right] that expands and shrinks based on a cond
 Repeatedly halve the search space by comparing with the midpoint.
 - Best for: sorted or partially sorted arrays
 - O(log n) time complexity
+- Can be extended to find first/last occurrence by continuing search after a match
 
 ### Expand from Center
 For palindrome problems, treat each character (or gap between characters) as a potential center and expand outward.
@@ -371,16 +446,18 @@ Rewire next pointers directly without allocating extra space.
 
 ## Double-Check Notes
 
-| #  | Verified Detail                                                                 |
-|----|---------------------------------------------------------------------------------|
-| Q1 | Output [1,2] is 1-based. numbers[0]+numbers[1] = 2+7 = 9. Correct.             |
-| Q2 | Duplicate skipping works at both i level and pointer level. Correct.           |
-| Q3 | "deeee" -> remove 'd' -> "eeee" is palindrome -> true. Correct.                |
-| Q4 | Modifies array in-place, no return value (matches LeetCode style). Correct.    |
-| Q5 | atMost(2)=12, atMost(1)=5, exactly(2)=7. Verified manually. Correct.           |
-| Q6 | nums[4]=0 for input [4,5,6,7,0,1,2], target=0 -> output 4. Correct.            |
-| Q7 | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.       |
-| Q8 | Odd/even refers to node position (1-based index), not node value. Correct.     |
+| #  | Verified Detail                                                                          |
+|----|------------------------------------------------------------------------------------------|
+| Q1 | Output [1,2] is 1-based. numbers[0]+numbers[1] = 2+7 = 9. Correct.                     |
+| Q2 | Duplicate skipping works at both i level and pointer level. Correct.                    |
+| Q3 | "deeee" -> remove 'd' -> "eeee" is palindrome -> true. Correct.                         |
+| Q4 | Modifies array in-place, no return value (matches LeetCode style). Correct.             |
+| Q5 | atMost(2)=12, atMost(1)=5, exactly(2)=7. Verified manually. Correct.                   |
+| Q6 | nums[4]=0 for input [4,5,6,7,0,1,2], target=0 -> output 4. Correct.                    |
+| Q7 | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.               |
+| Q8 | eight_question.js is now inside Question/ folder. Input/output verified. Correct.       |
+| Q9 | [1,2,2,2,3,4,5] target=2 -> [1,3]. [5,7,7,8,8,10] target=8 -> [3,4]. Correct.         |
+
 ---
 
 ## How to Run
@@ -396,19 +473,25 @@ node Question/fourth_question.js
 node Question/fifth_question.js
 node Question/sixth_question.js
 node Question/seventh_question.js
-node eight_question.js
+node Question/eight_question.js
+node Question/ninth_question.js
+node Question/ninth_question_easy.js
 ```
 
 To test with custom input, add a console.log call at the bottom of any file:
 
 ```js
 // first_question.js
-console.log(twoSum([2, 7, 11, 15], 9));  // [1, 2]
-console.log(twoSum([2, 3, 4], 6));        // [1, 3]
+console.log(twoSum([2, 7, 11, 15], 9));          // [1, 2]
 
 // second_question.js
-console.log(threeSum([-1, 0, 1, 2, -1, -4]));  // [[-1,-1,2],[-1,0,1]]
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));    // [[-1,-1,2],[-1,0,1]]
 
 // sixth_question.js
-console.log(search([4, 5, 6, 7, 0, 1, 2], 0));  // 4
+console.log(search([4, 5, 6, 7, 0, 1, 2], 0));   // 4
+
+// ninth_question.js
+console.log(searchRange([1, 2, 2, 2, 3, 4, 5], 2));  // [1, 3]
+console.log(searchRange([5, 7, 7, 8, 8, 10], 8));     // [3, 4]
+console.log(searchRange([1, 2, 3], 5));                // [-1, -1]
 ```
