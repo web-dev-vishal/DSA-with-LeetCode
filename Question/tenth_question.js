@@ -23,3 +23,9 @@ function subarraySum(nums, k) {
 
     return count;
 }
+
+/*
+input :- nums = [1,1,1]
+    k = 2
+output :- 2
+*/
