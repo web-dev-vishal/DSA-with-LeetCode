@@ -1,7 +1,7 @@
 # JavaScript DSA Practice
 
 A collection of classic Data Structures & Algorithms problems solved in JavaScript.
-Covers: Two Pointers | Sliding Window | Binary Search | Expand from Center | Linked List
+Covers: Two Pointers | Sliding Window | Binary Search | Prefix Sum | Expand from Center | Linked List
 
 ---
 
@@ -20,8 +20,9 @@ DSA Question from LeetCode/
 |   +-- sixth_question.js         ->  Search in Rotated Array       (Binary Search)
 |   +-- seventh_question.js       ->  Palindromic Substrings        (Expand from Center)
 |   +-- eight_question.js         ->  Odd Even Linked List          (Linked List)
-|   +-- ninth_question.js         ->  Find First & Last Position    (Binary Search - detailed)
+|   +-- ninth_question.js          ->  Find First & Last Position    (Binary Search - detailed)
 |   +-- ninth_question_easy.js    ->  Find First & Last Position    (Binary Search - simplified)
+|   +-- tenth_question.js         ->  Subarray Sum Equals K         (Prefix Sum + HashMap)
 |
 +-- README.md
 ```
@@ -43,6 +44,7 @@ DSA Question from LeetCode/
 | 8  | Odd Even Linked List           | eight_question.js          | Linked List          | O(n)     | O(1)  |
 | 9  | Find First & Last Position     | ninth_question.js          | Binary Search x2     | O(log n) | O(1)  |
 | 9b | Find First & Last (simplified) | ninth_question_easy.js     | Binary Search x2     | O(log n) | O(1)  |
+| 10 | Subarray Sum Equals K          | tenth_question.js          | Prefix Sum + HashMap | O(n)     | O(n)  |
 
 ---
 
@@ -414,6 +416,60 @@ Logic (ninth_question_easy.js — single reusable function):
 
 ---
 
+### 10. Subarray Sum Equals K
+File: Question/tenth_question.js
+Technique: Prefix Sum + HashMap
+
+Count the total number of subarrays whose elements sum to exactly k.
+
+Example:
+```
+Input:  nums = [1, 1, 1],  k = 2
+Output: 2
+
+Valid subarrays:
+  [1,1] at index 0-1
+  [1,1] at index 1-2
+```
+
+Key Idea — Prefix Sum:
+```
+prefixSum[i] = sum of all elements from index 0 to i
+
+If prefixSum[j] - prefixSum[i] = k
+Then subarray from index i+1 to j has sum = k
+So we need: prefixSum[i] = prefixSum[j] - k
+```
+
+Visual — Step by step trace for [1,1,1], k=2:
+```
+map = {0:1}   (base case: empty subarray has sum 0)
+sum = 0, count = 0
+
+i=0: sum = 0+1 = 1
+     sum-k = 1-2 = -1  ->  not in map, skip
+     map = {0:1, 1:1}
+
+i=1: sum = 1+1 = 2
+     sum-k = 2-2 = 0   ->  in map with count 1  ->  count += 1  (count=1)
+     map = {0:1, 1:1, 2:1}
+
+i=2: sum = 2+1 = 3
+     sum-k = 3-2 = 1   ->  in map with count 1  ->  count += 1  (count=2)
+     map = {0:1, 1:1, 2:1, 3:1}
+
+Output: 2
+```
+
+Logic:
+- Keep a running prefix sum as we iterate
+- At each index, check if (sum - k) exists in the map
+- If yes, it means there are subarrays ending here that sum to k
+- Store each prefix sum and its frequency in the map
+- Base case: map starts with {0:1} to handle subarrays starting from index 0
+
+---
+
 ## Techniques Explained
 
 ### Two Pointers
@@ -431,6 +487,12 @@ Repeatedly halve the search space by comparing with the midpoint.
 - Best for: sorted or partially sorted arrays
 - O(log n) time complexity
 - Can be extended to find first/last occurrence by continuing search after a match
+
+### Prefix Sum + HashMap
+Compute a running sum and store it in a map to find subarrays with a target sum in O(1) lookup.
+- Best for: subarray sum problems where elements can be negative or zero
+- Key insight: if prefixSum[j] - prefixSum[i] = k, then subarray i+1..j sums to k
+- O(n) time, O(n) space
 
 ### Expand from Center
 For palindrome problems, treat each character (or gap between characters) as a potential center and expand outward.
@@ -457,6 +519,7 @@ Rewire next pointers directly without allocating extra space.
 | Q7 | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.               |
 | Q8 | eight_question.js is now inside Question/ folder. Input/output verified. Correct.       |
 | Q9 | [1,2,2,2,3,4,5] target=2 -> [1,3]. [5,7,7,8,8,10] target=8 -> [3,4]. Correct.         |
+| Q10| [1,1,1] k=2 -> 2. Traced manually: subarrays [1,1](0-1) and [1,1](1-2). Correct.     |
 
 ---
 
@@ -476,6 +539,7 @@ node Question/seventh_question.js
 node Question/eight_question.js
 node Question/ninth_question.js
 node Question/ninth_question_easy.js
+node Question/tenth_question.js
 ```
 
 To test with custom input, add a console.log call at the bottom of any file:
@@ -494,4 +558,8 @@ console.log(search([4, 5, 6, 7, 0, 1, 2], 0));   // 4
 console.log(searchRange([1, 2, 2, 2, 3, 4, 5], 2));  // [1, 3]
 console.log(searchRange([5, 7, 7, 8, 8, 10], 8));     // [3, 4]
 console.log(searchRange([1, 2, 3], 5));                // [-1, -1]
+
+// tenth_question.js
+console.log(subarraySum([1, 1, 1], 2));   // 2
+console.log(subarraySum([1, 2, 3], 3));   // 2  ([3] and [1,2])
 ```
