@@ -563,3 +563,17 @@ console.log(searchRange([1, 2, 3], 5));                // [-1, -1]
 console.log(subarraySum([1, 1, 1], 2));   // 2
 console.log(subarraySum([1, 2, 3], 3));   // 2  ([3] and [1,2])
 ```
+
+---
+
+## Changelog
+
+- 2026-03-28: Added run instructions + custom input examples to README.
+- 2026-03-28: Included “How to Run” section for Node.js usage.
+
+## Next steps
+
+- Add problem-specific input templates to each question file.
+- Add automated test harness with Jest or Mocha.
+- Add contributions guidelines and issue templates.
+
