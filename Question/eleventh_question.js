@@ -25,3 +25,8 @@ function nextGreaterElements(nums) {
 
     return result;
 }
+
+/* 
+input :-  [1, 2, 1]
+output : - [2, -1, 2]
+*/
