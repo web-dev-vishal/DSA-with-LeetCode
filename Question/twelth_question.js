@@ -16,3 +16,9 @@ function checkInclusion(s1, s2) {
 
     return false;
 }
+
+/*
+input :- let s1 = "ab";  // small string
+        let s2 = "eidbaooo";  // big string
+output :- false 
+*/
