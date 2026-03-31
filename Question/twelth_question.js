@@ -1,0 +1,18 @@
+function checkInclusion(s1, s2) {
+
+    // sort s1 once
+    let sortedS1 = s1.split('').sort().join('');
+
+    // check every substring of same length
+    for (let i = 0; i <= s2.length - s1.length; i++) {
+
+        let sub = s2.substring(i, i + s1.length);
+
+        // sort substring and compare
+        if (sub.split('').sort().join('') === sortedS1) {
+            return true;
+        }
+    }
+
+    return false;
+}
