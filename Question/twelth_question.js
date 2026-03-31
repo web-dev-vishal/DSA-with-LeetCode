@@ -18,7 +18,10 @@ function checkInclusion(s1, s2) {
 }
 
 /*
-input :- let s1 = "ab";  // small string
-        let s2 = "eidbaooo";  // big string
+ 1.input :- let s1 = "ab";  // small string
+            let s2 = "eidbaooo";  // big string
 output :- false 
+ 2. input :- let v1 = "adc";
+             let v2 = "dcda"
+output : - true
 */
