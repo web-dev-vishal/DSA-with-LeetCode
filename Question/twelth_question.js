@@ -1,28 +1,36 @@
 function checkInclusion(s1, s2) {
 
-    // Sort s1 once — our target signature to match against
-    let sortedS1 = s1.split('').sort().join('');
+    if (s1.length > s2.length) return false;
 
-    // Slide a window of size s1.length across s2
-    for (let i = 0; i <= s2.length - s1.length; i++) {
+    // Count letters in s1 and first window of s2
+    let count1 = new Array(26).fill(0);
+    let count2 = new Array(26).fill(0);
 
-        let sub = s2.substring(i, i + s1.length);
-
-        // If sorted window matches sorted s1 → permutation found
-        if (sub.split('').sort().join('') === sortedS1) {
-            return true;
-        }
+    for (let i = 0; i < s1.length; i++) {
+        count1[s1.charCodeAt(i) - 97]++;
+        count2[s2.charCodeAt(i) - 97]++;
     }
 
-    return false;
+    // Slide window — add right char, remove left char
+    for (let i = s1.length; i < s2.length; i++) {
+
+        // Arrays equal = permutation found
+        if (count1.join('') === count2.join('')) return true;
+
+        count2[s2.charCodeAt(i) - 97]++;               // add new char
+        count2[s2.charCodeAt(i - s1.length) - 97]--;   // remove old char
+    }
+
+    // Check last window
+    return count1.join('') === count2.join('');
 }
 
 /*
- 1. input :- let s1 = "ab";
-             let s2 = "eidbaooo";
+ 1. input :- s1 = "ab";
+             s2 = "eidbaooo"
     output :- true
 
- 2. input :- let s1 = "adc";
-             let s2 = "dcda";
+ 2. input :- s1 = "adc";
+             s2 = "dcda"
     output :- true
 */
