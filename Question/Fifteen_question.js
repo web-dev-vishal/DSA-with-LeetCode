@@ -28,3 +28,9 @@ function removeNthFromEnd(head, n) {
 
     return dummy.next;
 }
+
+/*
+input :- head = 1 → 2 → 3 → 4 → 5
+            n = 2
+output :- 1 → 2 → 3 → 5
+*/
