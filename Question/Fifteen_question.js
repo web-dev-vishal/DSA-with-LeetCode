@@ -30,7 +30,11 @@ function removeNthFromEnd(head, n) {
 }
 
 /*
-input :- head = 1 → 2 → 3 → 4 → 5
+1. input :- head = 1 → 2 → 3 → 4 → 5
             n = 2
 output :- 1 → 2 → 3 → 5
+
+2. input :- head = 1 → 2
+            n = 1
+output :- 1 
 */
