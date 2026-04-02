@@ -38,3 +38,8 @@ function reverseKGroup(head, k) {
     // If less than k nodes → return as it is
     return head;
 }
+/*
+1.  input :- 1 → 2 → 3 → 4 → 5
+        k = 3
+    output :- 3 → 2 → 1 → 4 → 5 
+*/
