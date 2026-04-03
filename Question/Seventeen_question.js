@@ -37,9 +37,15 @@ function isPalindrome(head) {
 }
 
 /*
-input :- 1 → 2 → 2 → 1
-output :- true
-why output is true ??
-reson :- Forward: 1 2 2 1
-        Backward: 1 2 2 1 (same)
+1.  input :- 1 → 2 → 2 → 1
+    output :- true
+    why output is true ??
+    reson :- Forward: 1 2 2 1
+             Backward: 1 2 2 1 (same)
+
+2.  input :- 1 → 2 → 3
+    output :- false
+    why out is false ??
+    reson :- Forward: 1 2 3
+             Backward: 3 2 1 (not same)
 */
