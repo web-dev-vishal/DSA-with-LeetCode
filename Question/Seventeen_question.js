@@ -35,3 +35,11 @@ function isPalindrome(head) {
     // If all values matched
     return true;
 }
+
+/*
+input :- 1 → 2 → 2 → 1
+output :- true
+why output is true ??
+reson :- Forward: 1 2 2 1
+        Backward: 1 2 2 1 (same)
+*/
