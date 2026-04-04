@@ -59,3 +59,13 @@ function minWindow(s, t) {
     // if no valid window found, return empty string
     return minLen === Infinity ? "" : s.substring(start, start + minLen);
 }
+/*
+Input:
+s = "ADOBECODEBANC"
+t = "ABC"
+
+Output:
+"BANC"
+
+Explanation: "BANC" is the smallest substring of s that contains A, B, and C
+*/
