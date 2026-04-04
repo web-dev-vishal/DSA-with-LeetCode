@@ -60,12 +60,22 @@ function minWindow(s, t) {
     return minLen === Infinity ? "" : s.substring(start, start + minLen);
 }
 /*
-Input:
-s = "ADOBECODEBANC"
-t = "ABC"
+1.  Input:
+        s = "ADOBECODEBANC"
+        t = "ABC"
 
-Output:
-"BANC"
+    Output:
+       "BANC"
 
-Explanation: "BANC" is the smallest substring of s that contains A, B, and C
+    Explanation:
+     "BANC" is the smallest substring of s that contains A, B, and C
+
+2.  Input: 
+        s = "a"
+        t = "aa"
+
+    output: 
+        " "
+    Explanation:
+     t needs 2 'a', but s has only 1
 */
