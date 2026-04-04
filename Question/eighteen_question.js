@@ -1,5 +1,4 @@
 function minWindow(s, t) {
-
     let map = new Map();
 
     // Step 1: store frequency of characters in t
@@ -51,7 +50,6 @@ function minWindow(s, t) {
                     count++;
                 }
             }
-
             left++;  // shrink window from the left
         }
     }
