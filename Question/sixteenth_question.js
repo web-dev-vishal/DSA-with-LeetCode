@@ -20,7 +20,7 @@ function reverseKGroup(head, k) {
 
         // Step 2: Reverse first k nodes
         let prev = null;
-        let curr = head;
+        curr = head;  // reuse outer curr, no redeclaration
 
         for (let i = 0; i < k; i++) {
             let next = curr.next;

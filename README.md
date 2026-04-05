@@ -19,15 +19,15 @@ DSA Question from LeetCode/
 |   +-- fifth_question.js         ->  K Distinct Subarrays          (Sliding Window)
 |   +-- sixth_question.js         ->  Search in Rotated Array       (Binary Search)
 |   +-- seventh_question.js       ->  Palindromic Substrings        (Expand from Center)
-|   +-- eight_question.js         ->  Odd Even Linked List          (Linked List)
+|   +-- eighth_question.js        ->  Odd Even Linked List          (Linked List)
 |   +-- ninth_question.js         ->  Find First & Last Position    (Binary Search - detailed)
 |   +-- ninth_question_easy.js    ->  Find First & Last Position    (Binary Search - simplified)
 |   +-- tenth_question.js         ->  Subarray Sum Equals K         (Prefix Sum + HashMap)
 |   +-- eleventh_question.js      ->  Next Greater Element II       (Monotonic Stack - circular)
-|   +-- twelth_question.js        ->  Permutation in String         (Sliding Window - fixed size)
-|   +-- Fifteen_question.js       ->  Remove Nth Node From End      (Linked List - two pointers)
-|   +-- Sixtheen_question.js      ->  Reverse Nodes in k-Group      (Linked List - recursive)
-|   +-- Seventeen_question.js     ->  Palindrome Linked List        (Linked List - slow/fast)
+|   +-- twelfth_question.js       ->  Permutation in String         (Sliding Window - fixed size)
+|   +-- fifteen_question.js       ->  Remove Nth Node From End      (Linked List - two pointers)
+|   +-- sixteenth_question.js     ->  Reverse Nodes in k-Group      (Linked List - recursive)
+|   +-- seventeen_question.js     ->  Palindrome Linked List        (Linked List - slow/fast)
 |   +-- eighteen_question.js      ->  Minimum Window Substring      (Sliding Window - variable)
 |
 +-- README.md
@@ -47,15 +47,15 @@ DSA Question from LeetCode/
 | 5   | K Distinct Subarrays             | fifth_question.js          | Sliding Window             | O(n)     | O(k)  |
 | 6   | Search in Rotated Array          | sixth_question.js          | Binary Search              | O(log n) | O(1)  |
 | 7   | Palindromic Substrings           | seventh_question.js        | Expand from Center         | O(n²)    | O(1)  |
-| 8   | Odd Even Linked List             | eight_question.js          | Linked List                | O(n)     | O(1)  |
+| 8   | Odd Even Linked List             | eighth_question.js         | Linked List                | O(n)     | O(1)  |
 | 9   | Find First & Last Position       | ninth_question.js          | Binary Search x2           | O(log n) | O(1)  |
 | 9b  | Find First & Last (simplified)   | ninth_question_easy.js     | Binary Search x2           | O(log n) | O(1)  |
 | 10  | Subarray Sum Equals K            | tenth_question.js          | Prefix Sum + HashMap       | O(n)     | O(n)  |
 | 11  | Next Greater Element II          | eleventh_question.js       | Monotonic Stack (circular) | O(n)     | O(n)  |
-| 12  | Permutation in String            | twelth_question.js         | Sliding Window (fixed)     | O(n)     | O(1)  |
-| 15  | Remove Nth Node From End         | Fifteen_question.js        | Linked List (two pointers) | O(n)     | O(1)  |
-| 16  | Reverse Nodes in k-Group         | Sixtheen_question.js       | Linked List (recursive)    | O(n)     | O(n/k)|
-| 17  | Palindrome Linked List           | Seventeen_question.js      | Linked List (slow/fast)    | O(n)     | O(1)  |
+| 12  | Permutation in String            | twelfth_question.js        | Sliding Window (fixed)     | O(n)     | O(1)  |
+| 15  | Remove Nth Node From End         | fifteen_question.js        | Linked List (two pointers) | O(n)     | O(1)  |
+| 16  | Reverse Nodes in k-Group         | sixteenth_question.js      | Linked List (recursive)    | O(n)     | O(n/k)|
+| 17  | Palindrome Linked List           | seventeen_question.js      | Linked List (slow/fast)    | O(n)     | O(1)  |
 | 18  | Minimum Window Substring         | eighteen_question.js       | Sliding Window (variable)  | O(n)     | O(t)  |
 
 > Note: Q13 and Q14 files are not present in the repository.
@@ -324,7 +324,7 @@ Logic:
 ---
 
 ### 8. Odd Even Linked List
-File: Question/eight_question.js
+File: Question/eighth_question.js
 Technique: Linked List Pointer Manipulation
 
 Reorder a linked list so all odd-indexed nodes come first, then all even-indexed nodes.
@@ -501,7 +501,7 @@ Logic:
 ---
 
 ### 12. Permutation in String
-File: Question/twelth_question.js
+File: Question/twelfth_question.js
 Technique: Sliding Window (fixed size)
 
 Check if any permutation of string s1 exists as a substring of s2.
@@ -537,7 +537,7 @@ Logic:
 ---
 
 ### 15. Remove Nth Node From End of List
-File: Question/Fifteen_question.js
+File: Question/fifteen_question.js
 Technique: Linked List (two pointers with dummy node)
 
 Remove the nth node from the end of a linked list and return the head.
@@ -576,7 +576,7 @@ Logic:
 ---
 
 ### 16. Reverse Nodes in k-Group
-File: Question/Sixtheen_question.js
+File: Question/sixteenth_question.js
 Technique: Linked List (recursive reversal)
 
 Reverse every k nodes of a linked list. If remaining nodes are fewer than k, leave them as-is.
@@ -607,7 +607,7 @@ Logic:
 ---
 
 ### 17. Palindrome Linked List
-File: Question/Seventeen_question.js
+File: Question/seventeen_question.js
 Technique: Linked List (slow/fast pointers + reverse)
 
 Check if a linked list is a palindrome in O(n) time and O(1) space.
@@ -766,15 +766,15 @@ node Question/fourth_question.js
 node Question/fifth_question.js
 node Question/sixth_question.js
 node Question/seventh_question.js
-node Question/eight_question.js
+node Question/eighth_question.js
 node Question/ninth_question.js
 node Question/ninth_question_easy.js
 node Question/tenth_question.js
 node Question/eleventh_question.js
-node Question/twelth_question.js
-node Question/Fifteen_question.js
-node Question/Sixtheen_question.js
-node Question/Seventeen_question.js
+node Question/twelfth_question.js
+node Question/fifteen_question.js
+node Question/sixteenth_question.js
+node Question/seventeen_question.js
 node Question/eighteen_question.js
 ```
 

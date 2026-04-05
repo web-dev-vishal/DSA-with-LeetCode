@@ -30,7 +30,7 @@ input :- let s = "aaa";
 output :- 6 
 
 2
-letcode input :- "abc"
+leetcode input :- "abc"
 
 output :- 3
 */

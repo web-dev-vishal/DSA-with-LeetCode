@@ -27,7 +27,7 @@ function twoSum(numbers, target) {
 }
 
 /** 
-output:-
+input:-
 let numbers = [2, 7, 11, 15];
 let target = 9;
 **/
