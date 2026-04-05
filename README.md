@@ -1,7 +1,7 @@
 # JavaScript DSA Practice
 
 A collection of classic Data Structures & Algorithms problems solved in JavaScript.
-Covers: Two Pointers | Sliding Window | Binary Search | Prefix Sum | Expand from Center | Linked List
+Covers: Two Pointers | Sliding Window | Binary Search | Prefix Sum | Expand from Center | Linked List | Monotonic Stack
 
 ---
 
@@ -20,9 +20,15 @@ DSA Question from LeetCode/
 |   +-- sixth_question.js         ->  Search in Rotated Array       (Binary Search)
 |   +-- seventh_question.js       ->  Palindromic Substrings        (Expand from Center)
 |   +-- eight_question.js         ->  Odd Even Linked List          (Linked List)
-|   +-- ninth_question.js          ->  Find First & Last Position    (Binary Search - detailed)
+|   +-- ninth_question.js         ->  Find First & Last Position    (Binary Search - detailed)
 |   +-- ninth_question_easy.js    ->  Find First & Last Position    (Binary Search - simplified)
 |   +-- tenth_question.js         ->  Subarray Sum Equals K         (Prefix Sum + HashMap)
+|   +-- eleventh_question.js      ->  Next Greater Element II       (Monotonic Stack - circular)
+|   +-- twelth_question.js        ->  Permutation in String         (Sliding Window - fixed size)
+|   +-- Fifteen_question.js       ->  Remove Nth Node From End      (Linked List - two pointers)
+|   +-- Sixtheen_question.js      ->  Reverse Nodes in k-Group      (Linked List - recursive)
+|   +-- Seventeen_question.js     ->  Palindrome Linked List        (Linked List - slow/fast)
+|   +-- eighteen_question.js      ->  Minimum Window Substring      (Sliding Window - variable)
 |
 +-- README.md
 ```
@@ -31,20 +37,28 @@ DSA Question from LeetCode/
 
 ## Quick Reference Table
 
-| #  | Problem                        | File                       | Technique            | Time     | Space |
-|----|--------------------------------|----------------------------|----------------------|----------|-------|
-| 1  | Two Sum II                     | first_question.js          | Two Pointers         | O(n)     | O(1)  |
-| 1b | Two Sum II (simplified)        | first_question_easy.js     | Two Pointers         | O(n)     | O(1)  |
-| 2  | 3Sum                           | second_question.js         | Sort + Two Pointers  | O(n^2)   | O(1)  |
-| 3  | Valid Palindrome II             | third_question.js          | Two Pointers         | O(n)     | O(1)  |
-| 4  | Reverse String                 | fourth_question.js         | Two Pointers         | O(n)     | O(1)  |
-| 5  | K Distinct Subarrays           | fifth_question.js          | Sliding Window       | O(n)     | O(k)  |
-| 6  | Search in Rotated Array        | sixth_question.js          | Binary Search        | O(log n) | O(1)  |
-| 7  | Palindromic Substrings         | seventh_question.js        | Expand from Center   | O(n^2)   | O(1)  |
-| 8  | Odd Even Linked List           | eight_question.js          | Linked List          | O(n)     | O(1)  |
-| 9  | Find First & Last Position     | ninth_question.js          | Binary Search x2     | O(log n) | O(1)  |
-| 9b | Find First & Last (simplified) | ninth_question_easy.js     | Binary Search x2     | O(log n) | O(1)  |
-| 10 | Subarray Sum Equals K          | tenth_question.js          | Prefix Sum + HashMap | O(n)     | O(n)  |
+| #   | Problem                          | File                       | Technique                  | Time     | Space |
+|-----|----------------------------------|----------------------------|----------------------------|----------|-------|
+| 1   | Two Sum II                       | first_question.js          | Two Pointers               | O(n)     | O(1)  |
+| 1b  | Two Sum II (simplified)          | first_question_easy.js     | Two Pointers               | O(n)     | O(1)  |
+| 2   | 3Sum                             | second_question.js         | Sort + Two Pointers        | O(n²)    | O(1)  |
+| 3   | Valid Palindrome II              | third_question.js          | Two Pointers               | O(n)     | O(1)  |
+| 4   | Reverse String                   | fourth_question.js         | Two Pointers               | O(n)     | O(1)  |
+| 5   | K Distinct Subarrays             | fifth_question.js          | Sliding Window             | O(n)     | O(k)  |
+| 6   | Search in Rotated Array          | sixth_question.js          | Binary Search              | O(log n) | O(1)  |
+| 7   | Palindromic Substrings           | seventh_question.js        | Expand from Center         | O(n²)    | O(1)  |
+| 8   | Odd Even Linked List             | eight_question.js          | Linked List                | O(n)     | O(1)  |
+| 9   | Find First & Last Position       | ninth_question.js          | Binary Search x2           | O(log n) | O(1)  |
+| 9b  | Find First & Last (simplified)   | ninth_question_easy.js     | Binary Search x2           | O(log n) | O(1)  |
+| 10  | Subarray Sum Equals K            | tenth_question.js          | Prefix Sum + HashMap       | O(n)     | O(n)  |
+| 11  | Next Greater Element II          | eleventh_question.js       | Monotonic Stack (circular) | O(n)     | O(n)  |
+| 12  | Permutation in String            | twelth_question.js         | Sliding Window (fixed)     | O(n)     | O(1)  |
+| 15  | Remove Nth Node From End         | Fifteen_question.js        | Linked List (two pointers) | O(n)     | O(1)  |
+| 16  | Reverse Nodes in k-Group         | Sixtheen_question.js       | Linked List (recursive)    | O(n)     | O(n/k)|
+| 17  | Palindrome Linked List           | Seventeen_question.js      | Linked List (slow/fast)    | O(n)     | O(1)  |
+| 18  | Minimum Window Substring         | eighteen_question.js       | Sliding Window (variable)  | O(n)     | O(t)  |
+
+> Note: Q13 and Q14 files are not present in the repository.
 
 ---
 
@@ -384,27 +398,6 @@ nums[M]=1 < target   ->  move L right
 L > R  ->  stop.  First occurrence = 1
 ```
 
-Visual — Finding last occurrence of 2 in [1, 2, 2, 2, 3, 4, 5]:
-```
-[ 1, 2, 2, 2, 3, 4, 5 ]
-  L        M           R
-
-nums[M]=2 == target  ->  store result=3, move L right to find later
-
-[ 1, 2, 2, 2, 3, 4, 5 ]
-               L  M  R
-
-nums[M]=4 > target   ->  move R left
-
-[ 1, 2, 2, 2, 3, 4, 5 ]
-               L
-               R
-
-nums[M]=3 > target   ->  move R left
-
-L > R  ->  stop.  Last occurrence = 3
-```
-
 Logic (ninth_question.js — two separate functions):
 - findFirst: standard binary search, but when target found, store index and keep searching LEFT
 - findLast:  standard binary search, but when target found, store index and keep searching RIGHT
@@ -470,17 +463,240 @@ Logic:
 
 ---
 
+### 11. Next Greater Element II
+File: Question/eleventh_question.js
+Technique: Monotonic Stack (circular array)
+
+For each element in a circular array, find the next greater element.
+If no greater element exists, return -1 for that position.
+
+Example:
+```
+Input:  [1, 2, 1]
+Output: [2, -1, 2]
+```
+
+Visual:
+```
+nums = [1, 2, 1]   (circular: after index 2, wraps back to index 0)
+
+Pass 1 (i=0): stack=[], push index 0  ->  stack=[0]
+Pass 1 (i=1): nums[1]=2 > nums[0]=1  ->  result[0]=2, pop 0, push 1  ->  stack=[1]
+Pass 1 (i=2): nums[2]=1 < nums[1]=2  ->  push 2  ->  stack=[1,2]
+
+Pass 2 (i=0): nums[0]=1 < nums[1]=2  ->  nothing popped
+Pass 2 (i=1): nums[1]=2 == nums[1]=2 ->  nothing popped
+Pass 2 (i=2): nums[2]=1 -> nums[0]=1 ->  result[2]=2, pop 2
+
+Final: [2, -1, 2]
+```
+
+Logic:
+- Traverse the array twice (2*n) to simulate circular behavior
+- Use i % n to get the actual index
+- Use a monotonic decreasing stack of indices
+- When a greater element is found, pop from stack and record the result
+- Only push indices during the first pass (i < n)
+
+---
+
+### 12. Permutation in String
+File: Question/twelth_question.js
+Technique: Sliding Window (fixed size)
+
+Check if any permutation of string s1 exists as a substring of s2.
+
+Examples:
+```
+Input:  s1 = "ab",  s2 = "eidbaooo"
+Output: true   ("ba" is a permutation of "ab" and appears in s2)
+
+Input:  s1 = "adc",  s2 = "dcda"
+Output: true   ("dca" / "adc" appears in s2)
+```
+
+Visual:
+```
+s1 = "ab"  ->  count1 = [1,1,0,...] (a=1, b=1)
+
+s2 = "e i d b a o o o"
+Window size = 2
+
+Window "ei": count2=[0,0,...,1,0,...,1]  !=  count1  ->  false
+Window "id": count2=[0,0,...,1,0,1,...]  !=  count1  ->  false
+Window "db": count2=[0,1,0,...,1,...]    !=  count1  ->  false
+Window "ba": count2=[1,1,0,...]          ==  count1  ->  true
+```
+
+Logic:
+- Build frequency arrays for s1 and the first window of s2
+- Slide the window: add the new right character, remove the old left character
+- At each step compare frequency arrays
+- If they match, a permutation exists
+
+---
+
+### 15. Remove Nth Node From End of List
+File: Question/Fifteen_question.js
+Technique: Linked List (two pointers with dummy node)
+
+Remove the nth node from the end of a linked list and return the head.
+
+Examples:
+```
+Input:  1 -> 2 -> 3 -> 4 -> 5,  n = 2
+Output: 1 -> 2 -> 3 -> 5
+
+Input:  1 -> 2,  n = 1
+Output: 1
+```
+
+Visual:
+```
+dummy -> 1 -> 2 -> 3 -> 4 -> 5
+fast                           (moved n+1=3 steps ahead)
+slow
+
+Move both until fast = null:
+  dummy -> 1 -> 2 -> 3 -> 4 -> 5
+                     slow  fast=null
+
+slow.next = slow.next.next  ->  skip node 4
+
+Result: 1 -> 2 -> 3 -> 5
+```
+
+Logic:
+- Use a dummy node before head to handle edge cases (e.g., removing head)
+- Move fast pointer n+1 steps ahead
+- Move both fast and slow until fast reaches null
+- slow is now just before the node to delete
+- Set slow.next = slow.next.next
+
+---
+
+### 16. Reverse Nodes in k-Group
+File: Question/Sixtheen_question.js
+Technique: Linked List (recursive reversal)
+
+Reverse every k nodes of a linked list. If remaining nodes are fewer than k, leave them as-is.
+
+Examples:
+```
+Input:  1 -> 2 -> 3 -> 4 -> 5,  k = 3
+Output: 3 -> 2 -> 1 -> 4 -> 5
+
+Input:  1 -> 2 -> 3 -> 4 -> 5,  k = 2
+Output: 2 -> 1 -> 4 -> 3 -> 5
+```
+
+Visual (k=3):
+```
+Group 1: [1, 2, 3]  ->  reverse  ->  [3, 2, 1]
+Group 2: [4, 5]     ->  less than k  ->  keep as [4, 5]
+
+Connect: 3 -> 2 -> 1 -> 4 -> 5
+```
+
+Logic:
+- Count k nodes; if fewer than k remain, return head unchanged
+- Reverse the first k nodes iteratively
+- Recursively call for the rest of the list
+- Connect the reversed group's tail to the result of the recursive call
+
+---
+
+### 17. Palindrome Linked List
+File: Question/Seventeen_question.js
+Technique: Linked List (slow/fast pointers + reverse)
+
+Check if a linked list is a palindrome in O(n) time and O(1) space.
+
+Examples:
+```
+Input:  1 -> 2 -> 2 -> 1
+Output: true
+
+Input:  1 -> 2 -> 3
+Output: false
+```
+
+Visual:
+```
+Step 1 — Find middle using slow/fast:
+  1 -> 2 -> 2 -> 1
+  slow=2 (middle), fast=null
+
+Step 2 — Reverse second half:
+  Second half: 2 -> 1  ->  reversed: 1 -> 2
+
+Step 3 — Compare:
+  First half:  1 -> 2
+  Second half: 1 -> 2
+  All match -> true
+```
+
+Logic:
+- Use slow/fast pointers to find the middle of the list
+- Reverse the second half in-place
+- Compare first half and reversed second half node by node
+- If all values match, it's a palindrome
+
+---
+
+### 18. Minimum Window Substring
+File: Question/eighteen_question.js
+Technique: Sliding Window (variable size)
+
+Find the smallest substring of s that contains all characters of t.
+Return "" if no such window exists.
+
+Examples:
+```
+Input:  s = "ADOBECODEBANC",  t = "ABC"
+Output: "BANC"
+
+Input:  s = "a",  t = "aa"
+Output: ""   (t needs 2 'a', but s has only 1)
+```
+
+Visual:
+```
+s = "A D O B E C O D E B A N C"
+t = "ABC"  ->  need A=1, B=1, C=1
+
+Expand right until all chars matched:
+  window "ADOBEC"  ->  has A,B,C  ->  valid, record length=6
+
+Shrink left:
+  remove 'A'  ->  window "DOBEC"  ->  missing A  ->  expand right again
+  ...
+  window "BANC"  ->  has A,B,C  ->  valid, length=4  ->  new minimum
+
+Output: "BANC"
+```
+
+Logic:
+- Use a frequency map for characters in t and a count of remaining needed chars
+- Expand right pointer, decrement count when a needed char is matched
+- When count == 0 (all chars matched), try shrinking from left
+- Track the minimum valid window seen
+- Return the smallest window or "" if none found
+
+---
+
 ## Techniques Explained
 
 ### Two Pointers
 Use two index variables moving toward each other (or in the same direction) to avoid nested loops.
 - Best for: sorted arrays, palindrome checks, in-place swaps
-- Reduces O(n^2) brute force down to O(n)
+- Reduces O(n²) brute force down to O(n)
 
 ### Sliding Window
 Maintain a dynamic window [left, right] that expands and shrinks based on a condition.
-- Best for: subarray or substring problems with a constraint (sum, distinct count, etc.)
-- Uses a Map or Set to track window contents efficiently
+- Best for: subarray or substring problems with a constraint (sum, distinct count, character match)
+- Fixed-size variant: window size stays constant (Q12)
+- Variable-size variant: window grows/shrinks based on validity (Q5, Q18)
 
 ### Binary Search
 Repeatedly halve the search space by comparing with the midpoint.
@@ -497,29 +713,43 @@ Compute a running sum and store it in a map to find subarrays with a target sum 
 ### Expand from Center
 For palindrome problems, treat each character (or gap between characters) as a potential center and expand outward.
 - Handles both odd-length and even-length palindromes
-- O(n^2) time but simple and clean
+- O(n²) time but simple and clean
 
 ### Linked List Pointer Manipulation
 Rewire next pointers directly without allocating extra space.
 - Best for: reordering, reversing, or partitioning linked lists
-- O(1) space complexity
+- O(1) space complexity (except recursive reversal which uses O(n/k) call stack)
+
+### Monotonic Stack
+Maintain a stack where elements are always in increasing or decreasing order.
+- Best for: next greater/smaller element problems
+- Circular arrays handled by traversing 2*n with index % n
+- O(n) time, O(n) space
 
 ---
 
 ## Double-Check Notes
 
-| #  | Verified Detail                                                                          |
-|----|------------------------------------------------------------------------------------------|
-| Q1 | Output [1,2] is 1-based. numbers[0]+numbers[1] = 2+7 = 9. Correct.                     |
-| Q2 | Duplicate skipping works at both i level and pointer level. Correct.                    |
-| Q3 | "deeee" -> remove 'd' -> "eeee" is palindrome -> true. Correct.                         |
-| Q4 | Modifies array in-place, no return value (matches LeetCode style). Correct.             |
-| Q5 | atMost(2)=12, atMost(1)=5, exactly(2)=7. Verified manually. Correct.                   |
-| Q6 | nums[4]=0 for input [4,5,6,7,0,1,2], target=0 -> output 4. Correct.                    |
-| Q7 | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.               |
-| Q8 | eight_question.js is now inside Question/ folder. Input/output verified. Correct.       |
-| Q9 | [1,2,2,2,3,4,5] target=2 -> [1,3]. [5,7,7,8,8,10] target=8 -> [3,4]. Correct.         |
-| Q10| [1,1,1] k=2 -> 2. Traced manually: subarrays [1,1](0-1) and [1,1](1-2). Correct.     |
+| #   | Verified Detail                                                                                    |
+|-----|----------------------------------------------------------------------------------------------------|
+| Q1  | Output [1,2] is 1-based. numbers[0]+numbers[1] = 2+7 = 9. Correct.                               |
+| Q2  | Duplicate skipping works at both i level and pointer level. Correct.                              |
+| Q3  | "deeee" -> remove 'd' -> "eeee" is palindrome -> true. Correct.                                   |
+| Q4  | Modifies array in-place, no return value (matches LeetCode style). Correct.                       |
+| Q5  | atMost(2)=12, atMost(1)=5, exactly(2)=7. Verified manually. Correct.                             |
+| Q6  | nums[4]=0 for input [4,5,6,7,0,1,2], target=0 -> output 4. Correct.                              |
+| Q7  | "aaa" -> 6 palindromes: a,a,a,aa,aa,aaa. Verified by expansion. Correct.                         |
+| Q8  | Input [1,2,3,4,5] -> output [1,3,5,2,4]. Input/output verified. Correct.                         |
+| Q9  | [1,2,2,2,3,4,5] target=2 -> [1,3]. [5,7,7,8,8,10] target=8 -> [3,4]. Correct.                   |
+| Q10 | [1,1,1] k=2 -> 2. Traced manually: subarrays [1,1](0-1) and [1,1](1-2). Correct.                |
+| Q11 | [1,2,1] -> [2,-1,2]. Stack traverses 2*n=6 iterations. Circular wrap via i%n. Correct.           |
+| Q12 | s1="ab", s2="eidbaooo" -> true. Window "ba" matches count1. Correct.                             |
+| Q15 | fast moves n+1=3 steps. slow stops before node 4. slow.next skips node 4. Correct.               |
+| Q16 | k=3: [1,2,3,4,5] -> [3,2,1,4,5]. Remaining 2 nodes < k, kept as-is. Correct.                    |
+| Q17 | 1->2->2->1: middle=2, reversed second half=1->2, compare matches. true. Correct.                 |
+| Q18 | "ADOBECODEBANC", t="ABC" -> "BANC" (length 4). Verified by shrinking window. Correct.            |
+
+> Q13 and Q14 are not present in the repository — no files to verify.
 
 ---
 
@@ -540,39 +770,60 @@ node Question/eight_question.js
 node Question/ninth_question.js
 node Question/ninth_question_easy.js
 node Question/tenth_question.js
+node Question/eleventh_question.js
+node Question/twelth_question.js
+node Question/Fifteen_question.js
+node Question/Sixtheen_question.js
+node Question/Seventeen_question.js
+node Question/eighteen_question.js
 ```
 
 To test with custom input, add a console.log call at the bottom of any file:
 
 ```js
 // first_question.js
-console.log(twoSum([2, 7, 11, 15], 9));          // [1, 2]
+console.log(twoSum([2, 7, 11, 15], 9));                    // [1, 2]
 
 // second_question.js
-console.log(threeSum([-1, 0, 1, 2, -1, -4]));    // [[-1,-1,2],[-1,0,1]]
+console.log(threeSum([-1, 0, 1, 2, -1, -4]));              // [[-1,-1,2],[-1,0,1]]
 
 // sixth_question.js
-console.log(search([4, 5, 6, 7, 0, 1, 2], 0));   // 4
+console.log(search([4, 5, 6, 7, 0, 1, 2], 0));             // 4
 
 // ninth_question.js
-console.log(searchRange([1, 2, 2, 2, 3, 4, 5], 2));  // [1, 3]
-console.log(searchRange([5, 7, 7, 8, 8, 10], 8));     // [3, 4]
-console.log(searchRange([1, 2, 3], 5));                // [-1, -1]
+console.log(searchRange([1, 2, 2, 2, 3, 4, 5], 2));        // [1, 3]
+console.log(searchRange([5, 7, 7, 8, 8, 10], 8));           // [3, 4]
+console.log(searchRange([1, 2, 3], 5));                     // [-1, -1]
 
 // tenth_question.js
-console.log(subarraySum([1, 1, 1], 2));   // 2
-console.log(subarraySum([1, 2, 3], 3));   // 2  ([3] and [1,2])
+console.log(subarraySum([1, 1, 1], 2));                     // 2
+console.log(subarraySum([1, 2, 3], 3));                     // 2  ([3] and [1,2])
+
+// eleventh_question.js
+console.log(nextGreaterElements([1, 2, 1]));                // [2, -1, 2]
+
+// twelth_question.js
+console.log(checkInclusion("ab", "eidbaooo"));              // true
+console.log(checkInclusion("adc", "dcda"));                 // true
+
+// eighteen_question.js
+console.log(minWindow("ADOBECODEBANC", "ABC"));             // "BANC"
+console.log(minWindow("a", "aa"));                          // ""
 ```
 
 ---
 
 ## Changelog
 
+- 2026-04-05: Added Q11–Q18 (Next Greater Element II, Permutation in String, Remove Nth Node, Reverse k-Group, Palindrome Linked List, Minimum Window Substring). Updated folder structure, quick reference table, detailed breakdowns, techniques, double-check notes, and run commands.
 - 2026-03-28: Added run instructions + custom input examples to README.
-- 2026-03-28: Included “How to Run” section for Node.js usage.
+- 2026-03-28: Included "How to Run" section for Node.js usage.
 
-## Next steps
+---
 
+## Next Steps
+
+- Add Q13 and Q14 to complete the sequence.
 - Add problem-specific input templates to each question file.
 - Add automated test harness with Jest or Mocha.
 - Add contributions guidelines and issue templates.
