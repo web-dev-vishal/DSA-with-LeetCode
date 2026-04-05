@@ -26,23 +26,23 @@ var sortList = function(head) {
 };
 
 // Helper function to merge two sorted lists
-function merge(l1, l2) {
+function merge(L1, L2) {
     let dummy = new ListNode(0);
     let tail = dummy;
 
-    while (l1 && l2) {
-        if (l1.val < l2.val) {
-            tail.next = l1;
-            l1 = l1.next;
+    while (L1 && L2) {
+        if (L1.val < L2.val) {
+            tail.next = L1;
+            L1 = L1.next;
         } else {
-            tail.next = l2;
-            l2 = l2.next;
+            tail.next = L2;
+            L2 = L2.next;
         }
         tail = tail.next;
     }
 
-    // Attach remaining nodes
-    tail.next = l1 || l2;
+    // Attach remaining notes
+    tail.next = L1 || L2;
 
     return dummy.next;
 }
