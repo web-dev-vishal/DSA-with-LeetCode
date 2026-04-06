@@ -32,3 +32,11 @@ var pairSum = function(head) {
 
     return maxSum;
 };
+/*
+input :- 1 → 2 → 3 → 4
+find middle :- slow → 3
+reverse second half :- 4 → 3
+compare :- 1 + 4 = 5
+           2 + 3 = 5
+output :- 5
+*/
