@@ -19,3 +19,11 @@ var findPeakElement = function(nums) {
     // left === right → peak index
     return left;
 };
+
+/*
+input :- nums = [1, 2, 3, 1]
+output :- 2
+// nums[2] = 3
+// It is greater than its neighbors (2 and 1)
+// So index 2 is a peak element
+*/
