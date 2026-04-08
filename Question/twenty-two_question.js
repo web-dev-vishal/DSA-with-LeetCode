@@ -20,3 +20,9 @@ var lengthOfLongestSubstring = function(s) {
 
     return maxLength;
 };
+/*
+input :-s = "abcabcbb"
+output :- 3
+Explanation:
+The longest substring without repeating characters is "abc" → length = 3
+*/
