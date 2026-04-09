@@ -32,17 +32,26 @@ var addTwoNumbers = function(l1, l2) {
 };
 
 /*
-input :- l1 = [2 → 4 → 3]
+1. input :- l1 = [2 → 4 → 3]
          l2 = [5 → 6 → 4]
 
 output :- [7 → 0 → 8]
 
 Explanation :- (342 + 465 = 807)
 
-input : - l1 = [9 → 9]
-          l2 = [1]
+2. input :- l1 = [9 → 9]
+            l2 = [1]
 
 output :- [0 → 0 → 1]
 
 Explanation :- (99 + 1 = 100)
+
+// wrong input and output
+3. input :- l1 = [2 → 4 → 3]   // represents 342
+            l2 = [5 → 6 → 4]   // represents 465
+
+output :- [8 → 0 → 7]
+
+Explanation :- [8 → 0 → 7] represents 708, not 807
+
 */
