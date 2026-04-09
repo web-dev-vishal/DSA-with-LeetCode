@@ -38,4 +38,11 @@ input :- l1 = [2 → 4 → 3]
 output :- [7 → 0 → 8]
 
 Explanation :- (342 + 465 = 807)
+
+input : - l1 = [9 → 9]
+          l2 = [1]
+
+output :- [0 → 0 → 1]
+
+Explanation :- (99 + 1 = 100)
 */
