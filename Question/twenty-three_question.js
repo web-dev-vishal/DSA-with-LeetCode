@@ -30,3 +30,12 @@ var addTwoNumbers = function(l1, l2) {
 
     return dummy.next; // return result list
 };
+
+/*
+input :- l1 = [2 → 4 → 3]
+         l2 = [5 → 6 → 4]
+
+output :- [7 → 0 → 8]
+
+Explanation :- (342 + 465 = 807)
+*/
