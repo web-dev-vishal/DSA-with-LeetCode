@@ -1,5 +1,5 @@
 // 410 question on leetcode
-var splitArray = function(nums, k) {
+var splitArray = function (nums, k) {
 
     // Check: can we split nums into <= k subarrays
     // where each subarray sum <= limit?
@@ -41,3 +41,13 @@ var splitArray = function(nums, k) {
 
     return result;
 };
+
+/*
+input:- nums = [7, 2, 5, 10, 8]
+        k = 2
+output:- 18
+Explanation:- 
+Split into: [7, 2, 5] → sum = 14 
+            [10, 8] → sum = 18
+         Largest sum = 18 (minimum possible)
+*/
