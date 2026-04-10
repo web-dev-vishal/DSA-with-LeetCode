@@ -50,4 +50,8 @@ Explanation:-
 Split into: [7, 2, 5] → sum = 14 
             [10, 8] → sum = 18
          Largest sum = 18 (minimum possible)
+
+inout:- nums = [1, -2, 3, 4]
+        k = 2
+output:- 3   // ❌ incorrect inout and output 
 */
