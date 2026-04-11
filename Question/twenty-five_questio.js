@@ -18,3 +18,8 @@ var findMin = function(nums) {
     // left points to the minimum element
     return nums[left];
 };
+/*
+input :- nums = [3, 4, 5, 1, 2]
+output :- 1
+Explanation :- The array is rotated, and 1 is the smallest element.
+*/
