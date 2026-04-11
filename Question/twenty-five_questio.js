@@ -19,7 +19,12 @@ var findMin = function(nums) {
     return nums[left];
 };
 /*
-input :- nums = [3, 4, 5, 1, 2]
-output :- 1
-Explanation :- The array is rotated, and 1 is the smallest element.
+1. input :- nums = [3, 4, 5, 1, 2]
+   output :- 1
+   Explanation :- The array is rotated, and 1 is the smallest element
+   
+   2. input :- nums = [4, 5, 6, 7, 0, 1, 2]
+   output :- 0
+   Explanation :- The array is rotated, and 0 is the smallest element
+
 */
