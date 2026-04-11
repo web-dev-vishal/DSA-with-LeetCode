@@ -29,6 +29,12 @@ DSA Question from LeetCode/
 |   +-- sixteenth_question.js     ->  Reverse Nodes in k-Group      (Linked List - recursive)
 |   +-- seventeen_question.js     ->  Palindrome Linked List        (Linked List - slow/fast)
 |   +-- eighteen_question.js      ->  Minimum Window Substring      (Sliding Window - variable)
+|   +-- ninetheen_question.js     ->  Sort List                     (Merge Sort - Linked List)
+|   +-- twenty_questio.js         ->  Max Twin Sum of Linked List   (Slow/Fast + Reverse)
+|   +-- twenty-one_question.js    ->  Find Peak Element             (Binary Search)
+|   +-- twenty-two_question.js    ->  Longest Substring No Repeat   (Sliding Window - Set)
+|   +-- twenty-three_question.js  ->  Add Two Numbers               (Linked List - carry)
+|   +-- twenty-four_question.js   ->  Split Array Largest Sum       (Binary Search on Answer)
 |
 +-- README.md
 ```
@@ -57,6 +63,12 @@ DSA Question from LeetCode/
 | 16  | Reverse Nodes in k-Group         | sixteenth_question.js      | Linked List (recursive)    | O(n)     | O(n/k)|
 | 17  | Palindrome Linked List           | seventeen_question.js      | Linked List (slow/fast)    | O(n)     | O(1)  |
 | 18  | Minimum Window Substring         | eighteen_question.js       | Sliding Window (variable)  | O(n)     | O(t)  |
+| 19  | Sort List                        | ninetheen_question.js      | Merge Sort (Linked List)   | O(n log n)| O(log n)|
+| 20  | Max Twin Sum of Linked List      | twenty_questio.js          | Slow/Fast + Reverse        | O(n)     | O(1)  |
+| 21  | Find Peak Element                | twenty-one_question.js     | Binary Search              | O(log n) | O(1)  |
+| 22  | Longest Substring No Repeat      | twenty-two_question.js     | Sliding Window (Set)       | O(n)     | O(n)  |
+| 23  | Add Two Numbers                  | twenty-three_question.js   | Linked List (carry)        | O(n)     | O(n)  |
+| 24  | Split Array Largest Sum          | twenty-four_question.js    | Binary Search on Answer    | O(n log s)| O(1) |
 
 > Note: Q13 and Q14 files are not present in the repository.
 
@@ -685,6 +697,221 @@ Logic:
 
 ---
 
+### 19. Sort List
+File: Question/ninetheen_question.js
+LeetCode: #148
+Technique: Merge Sort (Linked List)
+
+Sort a linked list in O(n log n) time using merge sort.
+
+Example:
+```
+Input:  4 -> 2 -> 1 -> 3
+Output: 1 -> 2 -> 3 -> 4
+```
+
+Visual:
+```
+4 -> 2 -> 1 -> 3
+Split:  [4 -> 2]  |  [1 -> 3]
+Split:  [4] [2]   |  [1] [3]
+Merge:  [2 -> 4]  |  [1 -> 3]
+Merge:  [1 -> 2 -> 3 -> 4]
+```
+
+Logic:
+- Find the middle using slow/fast pointers, then cut the list in half
+- Recursively sort both halves
+- Merge the two sorted halves using a dummy node
+
+---
+
+### 20. Maximum Twin Sum of a Linked List
+File: Question/twenty_questio.js
+LeetCode: #2130
+Technique: Slow/Fast Pointers + Reverse Second Half
+
+In a linked list of even length, the twin of node i is node (n-1-i).
+Find the maximum twin sum.
+
+Example:
+```
+Input:  1 -> 2 -> 3 -> 4
+Twins:  (1,4) and (2,3)
+Sums:   1+4=5, 2+3=5
+Output: 5
+```
+
+Visual:
+```
+Step 1 — Find middle:
+  slow stops at node 3
+
+Step 2 — Reverse second half:
+  3 -> 4  becomes  4 -> 3
+
+Step 3 — Compare twins:
+  first=1, second=4  ->  sum=5
+  first=2, second=3  ->  sum=5
+  max = 5
+```
+
+Logic:
+- Use slow/fast to find the midpoint
+- Reverse the second half in-place
+- Walk both halves simultaneously, computing twin sums
+- Track and return the maximum
+
+---
+
+### 21. Find Peak Element
+File: Question/twenty-one_question.js
+LeetCode: #162
+Technique: Binary Search
+
+A peak element is greater than its neighbors. Find any peak index.
+Assume nums[-1] = nums[n] = -infinity.
+
+Example:
+```
+Input:  nums = [1, 2, 3, 1]
+Output: 2   (nums[2] = 3 is a peak)
+```
+
+Visual:
+```
+[ 1, 2, 3, 1 ]
+  L     M  R
+
+nums[M]=2 < nums[M+1]=3  ->  peak is on the right  ->  left = M+1
+
+[ 1, 2, 3, 1 ]
+        L
+        R
+
+left == right  ->  return 2
+```
+
+Logic:
+- If nums[mid] < nums[mid+1], the peak must be to the right
+- Otherwise, the peak is at mid or to the left
+- Converge until left == right, which is the peak index
+
+---
+
+### 22. Longest Substring Without Repeating Characters
+File: Question/twenty-two_question.js
+LeetCode: #3
+Technique: Sliding Window (Set)
+
+Find the length of the longest substring with all unique characters.
+
+Examples:
+```
+Input:  "abcabcbb"  ->  Output: 3  ("abc")
+Input:  "bbbbb"     ->  Output: 1  ("b")
+```
+
+Visual:
+```
+s = "a b c a b c b b"
+     L R
+
+right=0: set={a},     window="a",    max=1
+right=1: set={a,b},   window="ab",   max=2
+right=2: set={a,b,c}, window="abc",  max=3
+right=3: 'a' in set  ->  remove 'a', left++
+         set={b,c,a}, window="bca",  max=3
+right=4: 'b' in set  ->  remove 'b', left++
+         set={c,a,b}, window="cab",  max=3
+...
+```
+
+Logic:
+- Use a Set to track characters in the current window
+- When a duplicate is found, shrink from the left until it's removed
+- Track the maximum window size seen
+
+---
+
+### 23. Add Two Numbers
+File: Question/twenty-three_question.js
+LeetCode: #2
+Technique: Linked List with Carry
+
+Two numbers are stored in reverse order in linked lists. Add them and return the sum as a linked list.
+
+Examples:
+```
+Input:  l1 = [2->4->3]  (represents 342)
+        l2 = [5->6->4]  (represents 465)
+Output: [7->0->8]       (represents 807)
+
+Input:  l1 = [9->9]  (represents 99)
+        l2 = [1]     (represents 1)
+Output: [0->0->1]    (represents 100)
+```
+
+Visual:
+```
+  2 -> 4 -> 3
++ 5 -> 6 -> 4
+-----------
+  2+5=7  carry=0  ->  node 7
+  4+6=10 carry=1  ->  node 0
+  3+4+1=8 carry=0 ->  node 8
+
+Result: 7 -> 0 -> 8
+```
+
+Logic:
+- Walk both lists simultaneously, adding digits + carry
+- carry = Math.floor(sum / 10), digit = sum % 10
+- If one list is shorter, treat missing digits as 0
+- After the loop, if carry > 0, append a final node
+
+Note: Example 3 in the file comments is marked as incorrect — the output [8->0->7] represents 708, not 807. The correct output is [7->0->8].
+
+---
+
+### 24. Split Array Largest Sum
+File: Question/twenty-four_question.js
+LeetCode: #410
+Technique: Binary Search on Answer
+
+Split nums into k non-empty subarrays to minimize the largest subarray sum.
+
+Example:
+```
+Input:  nums = [7, 2, 5, 10, 8],  k = 2
+Output: 18
+
+Best split: [7, 2, 5] sum=14  |  [10, 8] sum=18
+Largest sum = 18 (minimum possible)
+```
+
+Visual — Binary Search range:
+```
+left  = max(nums) = 10   (each element must fit in one subarray)
+right = sum(nums) = 32   (all in one subarray)
+
+mid = 21  ->  canSplit(21)?  [7,2,5] [10,8] -> 2 subarrays <= k=2  ->  yes, result=21, right=20
+mid = 15  ->  canSplit(15)?  [7,2,5] [10] [8] -> 3 subarrays > k=2  ->  no, left=16
+mid = 18  ->  canSplit(18)?  [7,2,5] [10,8] -> 2 subarrays <= k=2  ->  yes, result=18, right=17
+mid = 16  ->  canSplit(16)?  [7,2,5] [10] [8] -> 3 > k=2  ->  no, left=17
+left > right  ->  stop.  Answer = 18
+```
+
+Logic:
+- Binary search on the answer (the limit value)
+- canSplit(limit): greedily check if nums can be split into <= k subarrays each with sum <= limit
+- If canSplit is true, try a smaller limit (right = mid - 1)
+- If false, increase the limit (left = mid + 1)
+
+Note: Example 2 in the file comments is marked as incorrect (negative numbers don't apply to this problem).
+
+---
+
 ## Techniques Explained
 
 ### Two Pointers
@@ -726,6 +953,19 @@ Maintain a stack where elements are always in increasing or decreasing order.
 - Circular arrays handled by traversing 2*n with index % n
 - O(n) time, O(n) space
 
+### Merge Sort on Linked List
+Recursively split the list in half, sort each half, then merge.
+- Best for: sorting linked lists where random access isn't available
+- O(n log n) time, O(log n) space (call stack)
+- Finding the midpoint uses slow/fast pointers
+
+### Binary Search on Answer
+Instead of searching for a value in an array, binary search on the answer space itself.
+- Best for: minimization/maximization problems where you can verify a candidate answer in O(n)
+- Define left/right as the minimum and maximum possible answers
+- Use a canSplit/canFit helper to check if a mid value is feasible
+- O(n log s) where s is the range of the answer space
+
 ---
 
 ## Double-Check Notes
@@ -748,6 +988,12 @@ Maintain a stack where elements are always in increasing or decreasing order.
 | Q16 | k=3: [1,2,3,4,5] -> [3,2,1,4,5]. Remaining 2 nodes < k, kept as-is. Correct.                    |
 | Q17 | 1->2->2->1: middle=2, reversed second half=1->2, compare matches. true. Correct.                 |
 | Q18 | "ADOBECODEBANC", t="ABC" -> "BANC" (length 4). Verified by shrinking window. Correct.            |
+| Q19 | 4->2->1->3 -> 1->2->3->4. Merge sort splits, sorts, and merges. Correct.                         |
+| Q20 | 1->2->3->4: twins (1,4)=5 and (2,3)=5. max=5. Correct.                                           |
+| Q21 | [1,2,3,1]: mid=1, nums[1]<nums[2] -> go right, converge at index 2. nums[2]=3 is peak. Correct.  |
+| Q22 | "abcabcbb" -> 3 ("abc"). Set-based sliding window shrinks on duplicate. Correct.                  |
+| Q23 | 342+465=807 -> [7->0->8]. Carry logic verified digit by digit. Correct. (Example 3 in file is marked wrong by author.) |
+| Q24 | [7,2,5,10,8] k=2 -> 18. Binary search on answer verified with canSplit. Correct. (Example 2 in file is marked wrong by author.) |
 
 > Q13 and Q14 are not present in the repository — no files to verify.
 
@@ -776,6 +1022,12 @@ node Question/fifteen_question.js
 node Question/sixteenth_question.js
 node Question/seventeen_question.js
 node Question/eighteen_question.js
+node Question/ninetheen_question.js
+node Question/twenty_questio.js
+node Question/twenty-one_question.js
+node Question/twenty-two_question.js
+node Question/twenty-three_question.js
+node Question/twenty-four_question.js
 ```
 
 To test with custom input, add a console.log call at the bottom of any file:
@@ -809,12 +1061,34 @@ console.log(checkInclusion("adc", "dcda"));                 // true
 // eighteen_question.js
 console.log(minWindow("ADOBECODEBANC", "ABC"));             // "BANC"
 console.log(minWindow("a", "aa"));                          // ""
+
+// ninetheen_question.js  (requires ListNode helper)
+// sortList(4->2->1->3)                                      // 1->2->3->4
+
+// twenty_questio.js  (requires ListNode helper)
+// pairSum(1->2->3->4)                                       // 5
+
+// twenty-one_question.js
+console.log(findPeakElement([1, 2, 3, 1]));                 // 2
+console.log(findPeakElement([1, 2, 1, 3, 5, 6, 4]));        // 5
+
+// twenty-two_question.js
+console.log(lengthOfLongestSubstring("abcabcbb"));          // 3
+console.log(lengthOfLongestSubstring("bbbbb"));             // 1
+
+// twenty-three_question.js  (requires ListNode helper)
+// addTwoNumbers(2->4->3, 5->6->4)                           // 7->0->8
+
+// twenty-four_question.js
+console.log(splitArray([7, 2, 5, 10, 8], 2));               // 18
+console.log(splitArray([1, 2, 3, 4, 5], 2));                // 9
 ```
 
 ---
 
 ## Changelog
 
+- 2026-04-11: Added Q19–Q24 (Sort List, Max Twin Sum, Find Peak Element, Longest Substring No Repeat, Add Two Numbers, Split Array Largest Sum). Updated folder structure, quick reference table, detailed breakdowns, double-check notes, and run commands.
 - 2026-04-05: Added Q11–Q18 (Next Greater Element II, Permutation in String, Remove Nth Node, Reverse k-Group, Palindrome Linked List, Minimum Window Substring). Updated folder structure, quick reference table, detailed breakdowns, techniques, double-check notes, and run commands.
 - 2026-03-28: Added run instructions + custom input examples to README.
 - 2026-03-28: Included "How to Run" section for Node.js usage.
