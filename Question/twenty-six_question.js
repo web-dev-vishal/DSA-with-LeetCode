@@ -32,3 +32,15 @@ var removeNodes = function(head) {
     // First node in stack is the new head
     return stack[0];
 };
+/*
+1. input :- head = [5, 2, 13, 3, 8]
+Explanation :- 
+        5 → removed (because 13 is on the right and bigger)
+        2 → removed (because 13 is bigger)
+        13 → stays
+        3 → removed (because 8 is bigger)
+        8 → stays
+output :- [13, 8]
+
+2. 
+*/
