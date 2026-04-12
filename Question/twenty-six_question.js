@@ -1,4 +1,4 @@
-
+// 2487 question on leetcode
 var removeNodes = function(head) {
 
     // Stack will store nodes in decreasing order (front to back)
