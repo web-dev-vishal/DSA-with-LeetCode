@@ -66,3 +66,13 @@ var findAnagrams = function (s, p) {
 
     return result;
 };
+
+/*
+input :- s = "cbaebabacd"
+         p = "abc"
+
+output :- [0, 6]
+
+Explanation :- "cba" (index 0) → anagram of "abc" ✅
+               "bac" (index 6) → anagram of "abc" ✅
+*/
