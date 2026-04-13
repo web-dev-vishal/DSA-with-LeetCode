@@ -73,23 +73,29 @@ var findAnagrams = function (s, p) {
 
     output :- [0, 6]
 
-    Explanation :- "cba" (index 0) → anagram of "abc" ✅
-                   "bac" (index 6) → anagram of "abc" ✅
+    Explanation :- "cba" (index 0) → anagram of "abc" 
+                   "bac" (index 6) → anagram of "abc" 
 
 2.  input :- s = "abab"
              p = "ab"
 
     output :- [0, 1, 2]
 
-    Explanation :- "ab" → index 0 ✅
-                   "ba" → index 1 ✅
-                   "ab" → index 2 ✅
+    Explanation :- "ab" → index 0 
+                   "ba" → index 1 
+                   "ab" → index 2 
 
 3.  input :- s = "aaaa"
              p = "aa"
 
     output :- [0, 1, 2]
 
-    Expplan
-    
+    Expplantion :- Why that expectation is wrong?
+
+                  Because sliding window checks every continuous substring:
+
+                 "aa" → index 0 
+                 "aa" → index 1 
+                 "aa" → index 2 
+
 */
