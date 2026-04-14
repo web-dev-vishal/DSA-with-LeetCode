@@ -49,3 +49,11 @@ var minDays = function (bloomDay, m, k) {
 
     return answer;
 };
+/*
+input :- bloomDay = [1, 10, 3, 10, 2]
+         m = 3
+         k = 1
+output :- 3
+Explanation :- We need 3 bouquets, each with 1 flower.
+               So we just need 3 flowers that have bloomed.
+*/
