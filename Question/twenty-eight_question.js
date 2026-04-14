@@ -3,10 +3,10 @@ var minDays = function (bloomDay, m, k) {
 
     const n = bloomDay.length;
 
-    // ❌ Edge case: Even with all flowers, we can't make m bouquets
+    // Edge case: Even with all flowers, we can't make m bouquets
     if (m * k > n) return -1;
 
-    // 🔍 Helper: Can we make m bouquets if we wait until `day`?
+    // Helper: Can we make m bouquets if we wait until `day`?
     function canMakeBouquets(day) {
         let bouquets = 0;   // total bouquets formed so far
         let consecutive = 0; // adjacent bloomed flowers count
@@ -27,11 +27,11 @@ var minDays = function (bloomDay, m, k) {
             }
         }
 
-        // ✅ Can we make at least m bouquets?
+        // Can we make at least m bouquets?
         return bouquets >= m;
     }
 
-    // 🎯 Binary search on the answer (day range)
+    // Binary search on the answer (day range)
     let left = 1;
     let right = Math.max(...bloomDay);
     let answer = right; // start with worst case
