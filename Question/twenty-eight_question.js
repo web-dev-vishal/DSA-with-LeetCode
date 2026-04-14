@@ -50,10 +50,21 @@ var minDays = function (bloomDay, m, k) {
     return answer;
 };
 /*
+first input & output
 input :- bloomDay = [1, 10, 3, 10, 2]
          m = 3
          k = 1
 output :- 3
 Explanation :- We need 3 bouquets, each with 1 flower.
                So we just need 3 flowers that have bloomed.
+
+// wrong & second input & output 
+
+input :- bloomDay = [1, 2, 3]
+         m = 2
+         k = 2
+output :- -1
+Explanation :- Need 2 bouquets × 2 flowers each = 4 flowers
+               But only 3 flowers exist
+               So it's impossible, no matter how many days we wait.
 */
