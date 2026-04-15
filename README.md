@@ -1,7 +1,7 @@
 # JavaScript DSA Practice
 
 A collection of classic Data Structures & Algorithms problems solved in JavaScript.
-Covers: Two Pointers | Sliding Window | Binary Search | Prefix Sum | Expand from Center | Linked List | Monotonic Stack
+Covers: Two Pointers | Sliding Window | Binary Search | Prefix Sum | Expand from Center | Linked List | Monotonic Stack | Binary Search on Answer
 
 ---
 
@@ -35,6 +35,10 @@ DSA Question from LeetCode/
 |   +-- twenty-two_question.js    ->  Longest Substring No Repeat   (Sliding Window - Set)
 |   +-- twenty-three_question.js  ->  Add Two Numbers               (Linked List - carry)
 |   +-- twenty-four_question.js   ->  Split Array Largest Sum       (Binary Search on Answer)
+|   +-- twenty-five_questio.js   ->  Find Minimum in Rotated Array (Binary Search)
+|   +-- twenty-six_question.js   ->  Remove Nodes from Linked List (Monotonic Stack)
+|   +-- twenty-seven_question.js ->  Find All Anagrams in String   (Sliding Window - fixed)
+|   +-- twenty-eight_question.js ->  Minimum Days to Make Bouquets (Binary Search on Answer)
 |
 +-- README.md
 ```
@@ -69,6 +73,10 @@ DSA Question from LeetCode/
 | 22  | Longest Substring No Repeat      | twenty-two_question.js     | Sliding Window (Set)       | O(n)     | O(n)  |
 | 23  | Add Two Numbers                  | twenty-three_question.js   | Linked List (carry)        | O(n)     | O(n)  |
 | 24  | Split Array Largest Sum          | twenty-four_question.js    | Binary Search on Answer    | O(n log s)| O(1) |
+| 25  | Find Minimum in Rotated Array    | twenty-five_questio.js     | Binary Search              | O(log n) | O(1)  |
+| 26  | Remove Nodes from Linked List    | twenty-six_question.js     | Monotonic Stack            | O(n)     | O(n)  |
+| 27  | Find All Anagrams in String      | twenty-seven_question.js   | Sliding Window (fixed)     | O(n)     | O(1)  |
+| 28  | Minimum Days to Make Bouquets    | twenty-eight_question.js   | Binary Search on Answer    | O(n log d)| O(1) |
 
 > Note: Q13 and Q14 files are not present in the repository.
 
@@ -912,6 +920,167 @@ Note: Example 2 in the file comments is marked as incorrect (negative numbers do
 
 ---
 
+### 25. Find Minimum in Rotated Sorted Array
+File: Question/twenty-five_questio.js
+LeetCode: #153
+Technique: Binary Search
+
+Find the minimum element in a sorted array that has been rotated at an unknown pivot.
+
+Examples:
+```
+Input:  nums = [3, 4, 5, 1, 2]
+Output: 1
+
+Input:  nums = [4, 5, 6, 7, 0, 1, 2]
+Output: 0
+```
+
+Visual:
+```
+[ 3, 4, 5, 1, 2 ]
+  L     M     R
+
+nums[M]=5 > nums[R]=2  ->  minimum is in right half  ->  left = M+1
+
+[ 3, 4, 5, 1, 2 ]
+              L
+           M  R
+
+nums[M]=1 <= nums[R]=2  ->  minimum is in left half (including M)  ->  right = M
+
+left == right  ->  return nums[left] = 1
+```
+
+Logic:
+- If nums[mid] > nums[right], the minimum is in the right half
+- Otherwise, the minimum is in the left half (including mid)
+- Converge until left == right, which points to the minimum
+
+---
+
+### 26. Remove Nodes from Linked List
+File: Question/twenty-six_question.js
+LeetCode: #2487
+Technique: Monotonic Stack
+
+Remove every node that has a node with a greater value to its right.
+
+Examples:
+```
+Input:  [5, 2, 13, 3, 8]
+Output: [13, 8]
+
+Input:  [10, 9, 8, 7]
+Output: [10, 9, 8, 7]
+```
+
+Visual:
+```
+Traverse [5, 2, 13, 3, 8]:
+
+curr=5:  stack=[]         -> push 5   -> stack=[5]
+curr=2:  2 < 5            -> push 2   -> stack=[5,2]
+curr=13: 13 > 2 -> pop 2
+         13 > 5 -> pop 5
+         push 13           -> stack=[13]
+curr=3:  3 < 13           -> push 3   -> stack=[13,3]
+curr=8:  8 > 3 -> pop 3
+         8 < 13           -> push 8   -> stack=[13,8]
+
+Re-link: 13 -> 8 -> null
+Output: [13, 8]
+```
+
+Logic:
+- Use a monotonic decreasing stack (front to back)
+- For each node, pop all stack nodes with smaller values (they have a greater node to their right)
+- Push current node onto stack
+- Re-link all surviving nodes and return stack[0] as new head
+
+---
+
+### 27. Find All Anagrams in a String
+File: Question/twenty-seven_question.js
+LeetCode: #438
+Technique: Sliding Window (fixed size)
+
+Find all starting indices of anagrams of p in s.
+
+Examples:
+```
+Input:  s = "cbaebabacd",  p = "abc"
+Output: [0, 6]
+
+Input:  s = "abab",  p = "ab"
+Output: [0, 1, 2]
+```
+
+Visual:
+```
+p = "abc"  ->  pCount = [1,1,1,0,...] (a=1, b=1, c=1)
+Window size = 3
+
+s = "c b a e b a b a c d"
+
+Window "cba" (i=0): sCount=[1,1,1,0,...] == pCount  ->  push 0
+Window "bae" (i=1): sCount=[1,1,0,0,...,1,...] != pCount
+...
+Window "bac" (i=6): sCount=[1,1,1,0,...] == pCount  ->  push 6
+
+Output: [0, 6]
+```
+
+Logic:
+- Build frequency arrays for p and the first window of s
+- Track a `matches` counter (how many of 26 chars have equal frequency)
+- Slide window: update counts for entering right char and leaving left char
+- Adjust `matches` before and after each update
+- When matches == 26, all frequencies match → push start index
+
+---
+
+### 28. Minimum Number of Days to Make m Bouquets
+File: Question/twenty-eight_question.js
+LeetCode: #1482
+Technique: Binary Search on Answer
+
+Given bloomDay[], find the minimum number of days to wait to make m bouquets, each requiring k adjacent bloomed flowers.
+Return -1 if impossible.
+
+Examples:
+```
+Input:  bloomDay = [1, 10, 3, 10, 2],  m = 3,  k = 1
+Output: 3
+
+Input:  bloomDay = [1, 2, 3],  m = 2,  k = 2
+Output: -1   (need 4 flowers, only 3 exist)
+```
+
+Visual — Binary Search:
+```
+bloomDay = [1, 10, 3, 10, 2],  m=3, k=1
+
+left=1, right=10
+
+mid=5:  canMake(5)?  bloomed=[1,_,3,_,2] -> 3 bouquets >= 3  ->  yes, answer=5, right=4
+mid=2:  canMake(2)?  bloomed=[1,_,_,_,2] -> 2 bouquets < 3   ->  no, left=3
+mid=3:  canMake(3)?  bloomed=[1,_,3,_,2] -> 3 bouquets >= 3  ->  yes, answer=3, right=2
+
+left > right  ->  stop.  Answer = 3
+```
+
+Logic:
+- Edge case: if m * k > n, return -1 immediately
+- Binary search on the day range [1, max(bloomDay)]
+- canMakeBouquets(day): greedily count consecutive bloomed flowers, form bouquet every k flowers
+- If bouquets >= m, the day works → try smaller (right = mid - 1)
+- Otherwise try larger (left = mid + 1)
+
+Note: Example 2 in the file is correctly identified as impossible (m*k=4 > n=3).
+
+---
+
 ## Techniques Explained
 
 ### Two Pointers
@@ -994,6 +1163,10 @@ Instead of searching for a value in an array, binary search on the answer space 
 | Q22 | "abcabcbb" -> 3 ("abc"). Set-based sliding window shrinks on duplicate. Correct.                  |
 | Q23 | 342+465=807 -> [7->0->8]. Carry logic verified digit by digit. Correct. (Example 3 in file is marked wrong by author.) |
 | Q24 | [7,2,5,10,8] k=2 -> 18. Binary search on answer verified with canSplit. Correct. (Example 2 in file is marked wrong by author.) |
+| Q25 | [3,4,5,1,2] -> 1. nums[mid]>nums[right] narrows to right half. Converges at index 3. Correct.  |
+| Q26 | [5,2,13,3,8] -> [13,8]. Stack pops 5,2 when 13 arrives; pops 3 when 8 arrives. Correct.         |
+| Q27 | s="cbaebabacd", p="abc" -> [0,6]. matches counter tracks 26-char frequency equality. Correct.   |
+| Q28 | bloomDay=[1,10,3,10,2] m=3 k=1 -> 3. Binary search on day range verified with canMake. Correct. |
 
 > Q13 and Q14 are not present in the repository — no files to verify.
 
@@ -1028,6 +1201,10 @@ node Question/twenty-one_question.js
 node Question/twenty-two_question.js
 node Question/twenty-three_question.js
 node Question/twenty-four_question.js
+node Question/twenty-five_questio.js
+node Question/twenty-six_question.js
+node Question/twenty-seven_question.js
+node Question/twenty-eight_question.js
 ```
 
 To test with custom input, add a console.log call at the bottom of any file:
@@ -1082,12 +1259,28 @@ console.log(lengthOfLongestSubstring("bbbbb"));             // 1
 // twenty-four_question.js
 console.log(splitArray([7, 2, 5, 10, 8], 2));               // 18
 console.log(splitArray([1, 2, 3, 4, 5], 2));                // 9
+
+// twenty-five_questio.js
+console.log(findMin([3, 4, 5, 1, 2]));                      // 1
+console.log(findMin([4, 5, 6, 7, 0, 1, 2]));                // 0
+
+// twenty-six_question.js  (requires ListNode helper)
+// removeNodes(5->2->13->3->8)                               // 13->8
+
+// twenty-seven_question.js
+console.log(findAnagrams("cbaebabacd", "abc"));             // [0, 6]
+console.log(findAnagrams("abab", "ab"));                    // [0, 1, 2]
+
+// twenty-eight_question.js
+console.log(minDays([1, 10, 3, 10, 2], 3, 1));              // 3
+console.log(minDays([1, 2, 3], 2, 2));                      // -1
 ```
 
 ---
 
 ## Changelog
 
+- 2026-04-15: Added Q25–Q28 (Find Minimum in Rotated Array, Remove Nodes from Linked List, Find All Anagrams, Minimum Days to Make Bouquets). Updated folder structure, quick reference table, detailed breakdowns, double-check notes, and run commands.
 - 2026-04-11: Added Q19–Q24 (Sort List, Max Twin Sum, Find Peak Element, Longest Substring No Repeat, Add Two Numbers, Split Array Largest Sum). Updated folder structure, quick reference table, detailed breakdowns, double-check notes, and run commands.
 - 2026-04-05: Added Q11–Q18 (Next Greater Element II, Permutation in String, Remove Nth Node, Reverse k-Group, Palindrome Linked List, Minimum Window Substring). Updated folder structure, quick reference table, detailed breakdowns, techniques, double-check notes, and run commands.
 - 2026-03-28: Added run instructions + custom input examples to README.
