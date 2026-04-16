@@ -38,5 +38,14 @@ var isPalindrome = function(s) {
 
 2. Input: "racecar"
    Output: true
-   
+
+3. s = "race a car"
+   clean → "raceacar"
+   forward:  r a c e a c a r
+   backward: r a c a e c a r
+                     ↑ mismatch at index 3
+   Output: false 
+
+   Wrong answer would be: true
+   (Someone forgot to clean or compare correctly)
 */
