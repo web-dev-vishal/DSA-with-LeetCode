@@ -34,18 +34,20 @@ var isPalindrome = function(s) {
 /*
 1. Input: "A man, a plan, a canal: Panama"
    Output: true
-   Reason: After removing non-alphanumeric and lowering case → "amanaplanacanalpanama" (same forwards & backwards)
+   Reason: After removing non-alphanumeric and lowering case → "amanaplanacanalpanama"
+           (same forwards & backwards)
 
 2. Input: "racecar"
    Output: true
+   Reason: After removing non-alphanumeric and lowering case → "racecar"
+           (same forwards & backwards)
 
-3. s = "race a car"
+3. Input: "race a car"
    clean → "raceacar"
    forward:  r a c e a c a r
    backward: r a c a e c a r
                      ↑ mismatch at index 3
-   Output: false 
+   Output: false
 
-   Wrong answer would be: true
-   (Someone forgot to clean or compare correctly)
+   Wrong answer would be: true (Someone forgot to clean or compare correctly)
 */
