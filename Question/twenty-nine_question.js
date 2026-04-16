@@ -31,3 +31,8 @@ var isPalindrome = function(s) {
     // All characters matched → it's a palindrome
     return true;
 };
+/*
+1. Input: "A man, a plan, a canal: Panama"
+   Output: true
+   Reason: After removing non-alphanumeric and lowering case → "amanaplanacanalpanama" (same forwards & backwards)
+*/
