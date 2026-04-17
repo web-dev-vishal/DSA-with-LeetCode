@@ -33,3 +33,20 @@ var longestPalindrome = function(s) {
     // Return the longest palindromic substring
     return s.slice(start, start + maxLen);
 };
+
+/*
+1. Input: "babad"
+   Output: "bab"
+
+   Explanation: Your function checks every index as a center and expands outward.
+   String: b a b a d
+
+   At index 1 (a):
+   Expand (1,1) → "a"
+   Expand further → "bab"  (matches on both sides)
+   At index 2 (b):
+   Expand → "aba" (also valid)
+
+   Now you have two palindromes: "bab" and "aba" (both length 3).
+   Your code keeps the first longest one it finds, so it returns "bab".
+*/
