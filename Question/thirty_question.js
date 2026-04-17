@@ -62,4 +62,23 @@ var longestPalindrome = function(s) {
    Try expanding more → fails
 
    No longer palindrome exists, so "bb" is the answer.
+
+   Wrong input & output
+3. Input: "racecar"
+   Wrong Output: "race"
+
+   Why this is wrong:
+   String: r a c e c a r
+
+   Start at middle index 3 (e)
+   Expand outward:
+   "e" → "cec" → "aceca" → "racecar" 
+
+   So the entire string is a palindrome.
+
+   Correct output should be: "racecar"
+   "race" is wrong because:
+
+   It is not a palindrome
+   It is not the longest
 */
