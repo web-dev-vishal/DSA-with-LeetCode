@@ -53,19 +53,20 @@ var longestPalindrome = function(s) {
 2. Input: "cbbd"
    Output: "bb"
 
-   Explanation:
+   Explanation: Check center between index 1 and 2 → "bb" found No longer palindrome exists.
    String: c b b d
-
+   
    At index 1:
    Expand (1,1) → "b"
    Expand (1,2) → "bb" (even-length palindrome)
    Try expanding more → fails
-
+   
    No longer palindrome exists, so "bb" is the answer.
-
+   
    Wrong input & output
-3. Input: "racecar"
+   3. Input: "racecar"
    Wrong Output: "race"
+   Explanation: Start from middle → expand outward → full string matches.
 
    Why this is wrong:
    String: r a c e c a r
@@ -81,4 +82,5 @@ var longestPalindrome = function(s) {
 
    It is not a palindrome
    It is not the longest
+
 */
