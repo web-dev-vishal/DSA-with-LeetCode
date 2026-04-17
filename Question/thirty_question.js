@@ -49,4 +49,17 @@ var longestPalindrome = function(s) {
 
    Now you have two palindromes: "bab" and "aba" (both length 3).
    Your code keeps the first longest one it finds, so it returns "bab".
+
+2. Input: "cbbd"
+   Output: "bb"
+
+   Explanation:
+   String: c b b d
+
+   At index 1:
+   Expand (1,1) → "b"
+   Expand (1,2) → "bb" (even-length palindrome)
+   Try expanding more → fails
+
+   No longer palindrome exists, so "bb" is the answer.
 */
