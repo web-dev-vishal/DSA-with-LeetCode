@@ -39,6 +39,9 @@ DSA Question from LeetCode/
 |   +-- twenty-six_question.js   ->  Remove Nodes from Linked List (Monotonic Stack)
 |   +-- twenty-seven_question.js ->  Find All Anagrams in String   (Sliding Window - fixed)
 |   +-- twenty-eight_question.js ->  Minimum Days to Make Bouquets (Binary Search on Answer)
+|   +-- twenty-nine_question.js  ->  Valid Palindrome               (Two Pointers - alphanumeric)
+|   +-- thirty_question.js       ->  Longest Palindromic Substring  (Expand from Center)
+|   +-- thirty-one_question.js   ->  Binary Search                  (Binary Search - classic)
 |
 +-- README.md
 ```
@@ -77,6 +80,9 @@ DSA Question from LeetCode/
 | 26  | Remove Nodes from Linked List    | twenty-six_question.js     | Monotonic Stack            | O(n)     | O(n)  |
 | 27  | Find All Anagrams in String      | twenty-seven_question.js   | Sliding Window (fixed)     | O(n)     | O(1)  |
 | 28  | Minimum Days to Make Bouquets    | twenty-eight_question.js   | Binary Search on Answer    | O(n log d)| O(1) |
+| 29  | Valid Palindrome                  | twenty-nine_question.js    | Two Pointers               | O(n)     | O(1)  |
+| 30  | Longest Palindromic Substring     | thirty_question.js         | Expand from Center         | O(n²)    | O(1)  |
+| 31  | Binary Search                     | thirty-one_question.js     | Binary Search              | O(log n) | O(1)  |
 
 > Note: Q13 and Q14 files are not present in the repository.
 
@@ -1081,7 +1087,112 @@ Note: Example 2 in the file is correctly identified as impossible (m*k=4 > n=3).
 
 ---
 
-## Techniques Explained
+### 29. Valid Palindrome
+File: Question/twenty-nine_question.js
+LeetCode: #125
+Technique: Two Pointers (alphanumeric filter)
+
+A phrase is a palindrome if, after converting all uppercase letters to lowercase and removing all non-alphanumeric characters, it reads the same forward and backward.
+
+Examples:
+```
+Input:  "A man, a plan, a canal: Panama"
+Output: true   →  cleaned: "amanaplanacanalpanama"
+
+Input:  "race a car"
+Output: false  →  cleaned: "raceacar"  (mismatch at index 3)
+```
+
+Visual:
+```
+"A man, a plan, a canal: Panama"
+ →  lowercase + strip non-alphanumeric
+ →  "amanaplanacanalpanama"
+
+  a m a n a p l a n a c a n a l p a n a m a
+  L                                         R
+  a == a  →  move inward
+  ...
+  all match  →  true
+```
+
+Logic:
+- Convert string to lowercase upfront
+- Use two pointers starting at both ends
+- Skip non-alphanumeric characters on each side
+- Compare the two valid characters; if mismatch → return false
+- If pointers meet without mismatch → return true
+
+---
+
+### 30. Longest Palindromic Substring
+File: Question/thirty_question.js
+LeetCode: #5
+Technique: Expand from Center
+
+Find the longest substring of s that is a palindrome.
+
+Examples:
+```
+Input:  "babad"  →  Output: "bab"   (or "aba", both valid)
+Input:  "cbbd"   →  Output: "bb"
+```
+
+Visual — Expanding from center for "babad":
+```
+Index 0 (b): odd "b", even "" → max=1
+Index 1 (a): odd "a"→"bab"   → max=3, start=0
+Index 2 (b): odd "b"→"aba"   → length=3, not > 3, no update
+Index 3 (a): odd "a"         → no improvement
+Index 4 (d): odd "d"         → no improvement
+
+Result: s.slice(0, 0+3) = "bab"
+```
+
+Logic:
+- For each index, expand outward for both odd-length (single center) and even-length (two centers)
+- Track start index and maxLen of the best palindrome found
+- When loop ends, left and right are one step outside the palindrome, so length = right - left - 1 and start = left + 1
+- Return s.slice(start, start + maxLen)
+
+Note: Example 3 in the file is marked as incorrect — "racecar" is fully palindromic, so the correct output is "racecar", not "race".
+
+---
+
+### 31. Binary Search
+File: Question/thirty-one_question.js
+LeetCode: #704
+Technique: Binary Search (classic)
+
+Search for a target in a sorted array. Return its index, or -1 if not found.
+
+Examples:
+```
+Input:  nums = [1, 3, 5, 7, 9],  target = 5
+Output: 2
+
+Input:  nums = [2, 4, 6, 8, 10, 12],  target = 10
+Output: 4
+```
+
+Visual:
+```
+[ 1, 3, 5, 7, 9 ]
+  L     M     R
+
+nums[M]=5 == target  →  return 2
+```
+
+Logic:
+- Standard binary search: compare mid with target
+- If nums[mid] < target → search right half (left = mid + 1)
+- If nums[mid] > target → search left half (right = mid - 1)
+- If equal → return mid
+- If left > right → return -1
+
+Note: Example 3 in the file correctly demonstrates that binary search only works on sorted arrays — passing an unsorted array produces incorrect results.
+
+---
 
 ### Two Pointers
 Use two index variables moving toward each other (or in the same direction) to avoid nested loops.
@@ -1167,6 +1278,9 @@ Instead of searching for a value in an array, binary search on the answer space 
 | Q26 | [5,2,13,3,8] -> [13,8]. Stack pops 5,2 when 13 arrives; pops 3 when 8 arrives. Correct.         |
 | Q27 | s="cbaebabacd", p="abc" -> [0,6]. matches counter tracks 26-char frequency equality. Correct.   |
 | Q28 | bloomDay=[1,10,3,10,2] m=3 k=1 -> 3. Binary search on day range verified with canMake. Correct. |
+| Q29 | "A man, a plan, a canal: Panama" -> true. Cleaned: "amanaplanacanalpanama". Two pointers match all. Correct. |
+| Q30 | "babad" -> "bab". Expand from center at index 1 gives "bab" (length 3). Correct. (Example 3 in file is marked wrong by author — "racecar" is fully palindromic.) |
+| Q31 | [1,3,5,7,9] target=5 -> index 2. Fixed: file had output:3 (wrong), corrected to output:2. Correct. |
 
 > Q13 and Q14 are not present in the repository — no files to verify.
 
@@ -1205,6 +1319,9 @@ node Question/twenty-five_questio.js
 node Question/twenty-six_question.js
 node Question/twenty-seven_question.js
 node Question/twenty-eight_question.js
+node Question/twenty-nine_question.js
+node Question/thirty_question.js
+node Question/thirty-one_question.js
 ```
 
 To test with custom input, add a console.log call at the bottom of any file:
@@ -1274,12 +1391,25 @@ console.log(findAnagrams("abab", "ab"));                    // [0, 1, 2]
 // twenty-eight_question.js
 console.log(minDays([1, 10, 3, 10, 2], 3, 1));              // 3
 console.log(minDays([1, 2, 3], 2, 2));                      // -1
+
+// twenty-nine_question.js
+console.log(isPalindrome("A man, a plan, a canal: Panama")); // true
+console.log(isPalindrome("race a car"));                     // false
+
+// thirty_question.js
+console.log(longestPalindrome("babad"));                    // "bab"
+console.log(longestPalindrome("cbbd"));                     // "bb"
+
+// thirty-one_question.js
+console.log(search([1, 3, 5, 7, 9], 5));                    // 2
+console.log(search([2, 4, 6, 8, 10, 12], 10));              // 4
 ```
 
 ---
 
 ## Changelog
 
+- 2026-04-19: Added Q29–Q31 (Valid Palindrome, Longest Palindromic Substring, Binary Search). Fixed output typo in thirty-one_question.js (Example 1 output was 3, corrected to 2). Updated folder structure, quick reference table, detailed breakdowns, double-check notes, and run commands.
 - 2026-04-15: Added Q25–Q28 (Find Minimum in Rotated Array, Remove Nodes from Linked List, Find All Anagrams, Minimum Days to Make Bouquets). Updated folder structure, quick reference table, detailed breakdowns, double-check notes, and run commands.
 - 2026-04-11: Added Q19–Q24 (Sort List, Max Twin Sum, Find Peak Element, Longest Substring No Repeat, Add Two Numbers, Split Array Largest Sum). Updated folder structure, quick reference table, detailed breakdowns, double-check notes, and run commands.
 - 2026-04-05: Added Q11–Q18 (Next Greater Element II, Permutation in String, Remove Nth Node, Reverse k-Group, Palindrome Linked List, Minimum Window Substring). Updated folder structure, quick reference table, detailed breakdowns, techniques, double-check notes, and run commands.

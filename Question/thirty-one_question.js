@@ -25,7 +25,7 @@ var search = function(nums, target) {
 /*
 1. input : nums = [1, 3, 5, 7, 9]
    target = 5
-   output : 3
+   output : 2
    Explanation: 
    The array is sorted. The middle element becomes 5, which matches the target, so the function correctly returns index 2.
 
