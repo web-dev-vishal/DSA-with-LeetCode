@@ -43,19 +43,38 @@ var maxDistance = function(position, m) {
     return answer;
 };
 /*
-1. input: position = [1, 2, 3, 4, 7]
-        m = 3
-   output: [1, 2, 3, 4, 7]
-   Explanation: 
-
-2. input: position = [5, 4, 3, 2, 1, 1000000000]
-   m = 2
-   output: [1, 2, 3, 4, 5, 1000000000]
+1. input: position = [1, 2, 3, 4, 7], m = 3
+   After sorting: [1, 2, 3, 4, 7]
+   output: 3
    Explanation:
+   We have 5 baskets at positions 1, 2, 3, 4, 7 and we need to place 3 balls.
+   We want the minimum gap between any two balls to be as large as possible.
+   Best placement → balls at positions 1, 4, 7
+     gap between 1 and 4 = 3
+     gap between 4 and 7 = 3
+   The minimum gap is 3, which is the best we can achieve.
 
-❌ wrong input & output
-3. input: 1000000000 - 1 = 999999999
-    output: [1, 2, 8, 12, 17]
-    Explanation: 
+2. input: position = [5, 4, 3, 2, 1, 1000000000], m = 2
+   After sorting: [1, 2, 3, 4, 5, 1000000000]
+   output: 999999999
+   Explanation:
+   We only need to place 2 balls, so just put one at each end.
+   Ball 1 → position 1 (leftmost)
+   Ball 2 → position 1,000,000,000 (rightmost)
+   Gap = 1,000,000,000 - 1 = 999,999,999
+   No other placement gives a bigger gap, so the answer is 999,999,999.
 
+❌ Wrong input and output 
+
+3. input: position = [1, 2, 8, 12, 17], m = 2
+   After sorting: [1, 2, 8, 12, 17]
+   output: 16
+   Explanation:
+   Again only 2 balls, so put one at each end.
+   Ball 1 → position 1 (leftmost)
+   Ball 2 → position 17 (rightmost)
+   Gap = 17 - 1 = 16
+   This is the maximum possible gap, so the answer is 16.
+   (Note: 1,000,000,000 - 1 from the previous example was a separate input,
+    not part of this one.)
 */
