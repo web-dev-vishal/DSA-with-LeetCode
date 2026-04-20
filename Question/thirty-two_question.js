@@ -17,7 +17,7 @@ var maxDistance = function(position, m) {
                 lastPlaced = position[i]; // update last placed position
             }
 
-            // Early exit: already placed all m balls ✅
+            // Early exit: already placed all m balls 
             if (count === m) return true;
         }
 
@@ -57,8 +57,5 @@ var maxDistance = function(position, m) {
 3. input: 1000000000 - 1 = 999999999
     output: [1, 2, 8, 12, 17]
     Explanation: 
-
-
-
 
 */
