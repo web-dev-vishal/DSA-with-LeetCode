@@ -43,5 +43,11 @@ var maxDistance = function(position, m) {
     return answer;
 };
 /*
+1. input: position = [1, 2, 3, 4, 7]
+        m = 3
+   output: [1, 2, 3, 4, 7]
+   Expaltion: 
 
-*/
+2. position = [5, 4, 3, 2, 1, 1000000000]
+m = 2
+        */
