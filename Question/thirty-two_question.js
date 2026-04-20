@@ -46,8 +46,14 @@ var maxDistance = function(position, m) {
 1. input: position = [1, 2, 3, 4, 7]
         m = 3
    output: [1, 2, 3, 4, 7]
-   Expaltion: 
+   Explanation: 
 
-2. position = [5, 4, 3, 2, 1, 1000000000]
-m = 2
-        */
+2. input: position = [5, 4, 3, 2, 1, 1000000000]
+   m = 2
+   output: [1, 2, 3, 4, 5, 1000000000]
+   Explanation:
+
+3. 
+
+
+   */
