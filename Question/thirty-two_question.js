@@ -53,7 +53,12 @@ var maxDistance = function(position, m) {
    output: [1, 2, 3, 4, 5, 1000000000]
    Explanation:
 
-3. 
+❌ wrong input & output
+3. input: 1000000000 - 1 = 999999999
+    output: [1, 2, 8, 12, 17]
+    Explanation: 
 
 
-   */
+
+
+*/
