@@ -44,6 +44,24 @@ Step 2: Reverse first k elements (0 → 2)
 Step 3: Reverse remaining elements (3 → 6)
 [5, 6, 7, 1, 2, 3, 4]
 
+2. Input:
+nums = [1, 2, 3, 4]
+k = 2
+
+Output:
+[3, 4, 1, 2]
+
+Explanation:
+Step-by-step explanation
+n = 4
+k = 2 % 4 = 2
+Step 1: Reverse entire array
+[4, 3, 2, 1]
+Step 2: Reverse first k elements (0 → 1)
+[3, 4, 2, 1]
+Step 3: Reverse remaining elements (2 → 3)
+[3, 4, 1, 2]
+
 ❌ wrong input & output 
 3. input: Input:
 nums = []
