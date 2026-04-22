@@ -25,3 +25,20 @@ var rotate = function(nums, k) {
     // Step 3: Reverse the remaining elements (they're in wrong order)
     reverse(k, n - 1);
 };
+/*
+❌ wrong input & output 
+3. input: Input:
+nums = []
+k = 3
+
+Output:
+nums = []   // but this is logically incorrect behavior
+
+Explanation
+n = nums.length = 0
+Then: k = k % n = 3 % 0 → ❌ invalid operation (NaN in JavaScript)
+Now k becomes NaN, so:
+reverse(0, k - 1) → reverse(0, NaN)
+reverse(k, n - 1) → reverse(NaN, -1)
+These loops never run properly because comparisons with NaN are always false.
+*/
