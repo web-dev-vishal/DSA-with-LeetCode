@@ -26,6 +26,24 @@ var rotate = function(nums, k) {
     reverse(k, n - 1);
 };
 /*
+1. Input:
+nums = [1, 2, 3, 4, 5, 6, 7]
+k = 3
+
+Output:
+[5, 6, 7, 1, 2, 3, 4]
+
+Explanation: 
+Step-by-step explanation
+n = 7
+k = 3 % 7 = 3
+Step 1: Reverse entire array
+[7, 6, 5, 4, 3, 2, 1]
+Step 2: Reverse first k elements (0 → 2)
+[5, 6, 7, 4, 3, 2, 1]
+Step 3: Reverse remaining elements (3 → 6)
+[5, 6, 7, 1, 2, 3, 4]
+
 ❌ wrong input & output 
 3. input: Input:
 nums = []
