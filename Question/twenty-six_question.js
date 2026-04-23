@@ -45,5 +45,5 @@ var removeNodes = function (head) {
 2. input :- head = [10, 9, 8, 7]
    Explanation :-
        Each node is greater than everything to its right 
-   poutout :- [10, 9, 8, 7]
+   output :- [10, 9, 8, 7]
 */

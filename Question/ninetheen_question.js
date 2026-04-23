@@ -1,4 +1,11 @@
 // question no :- 148 on leetcode
+
+// Definition for singly-linked list
+function ListNode(val, next = null) {
+    this.val = val;
+    this.next = next;
+}
+
 var sortList = function(head) {
     // Base case: empty or single node
     if (!head || !head.next) return head;

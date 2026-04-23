@@ -42,6 +42,8 @@ DSA Question from LeetCode/
 |   +-- twenty-nine_question.js  ->  Valid Palindrome               (Two Pointers - alphanumeric)
 |   +-- thirty_question.js       ->  Longest Palindromic Substring  (Expand from Center)
 |   +-- thirty-one_question.js   ->  Binary Search                  (Binary Search - classic)
+|   +-- thirty-two_question.js  ->  Magnetic Force Between Balls   (Binary Search on Answer)
+|   +-- thirty-three_question.js -> Rotate Array                   (Reverse - in-place)
 |
 +-- README.md
 ```

@@ -10,7 +10,7 @@ var search = function(nums, target) {
         const mid = Math.floor((left + right) / 2);
 
         if (nums[mid] === target) {
-            return mid; // `found the target
+            return mid; // found the target
         }
 
         if (nums[mid] < target) {
