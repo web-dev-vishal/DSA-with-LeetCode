@@ -1,6 +1,6 @@
 // 150 question on leetcode 
 
-var evalRPN = function(tokens) {
+var evalRPN = function (tokens) {
 
     const stack = [];
 
