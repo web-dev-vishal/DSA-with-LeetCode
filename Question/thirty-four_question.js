@@ -32,3 +32,26 @@ var evalRPN = function(tokens) {
     // Last remaining value in stack is the answer
     return stack[0];
 };
+/*
+1. Input:
+tokens = ["2", "1", "+", "3", "*"]
+
+Output:
+9
+
+Explanation:
+Step-by-step explanation
+
+Stack = []
+
+Push 2 → [2]  
+Push 1 → [2, 1]  
+
+Operator '+' → pop 1 and 2 → 2 + 1 = 3 → push → [3]  
+
+Push 3 → [3, 3]  
+
+Operator '*' → pop 3 and 3 → 3 * 3 = 9 → push → [9]  
+
+Final answer = 9
+*/
