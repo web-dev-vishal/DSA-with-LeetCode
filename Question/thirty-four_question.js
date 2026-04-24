@@ -54,4 +54,25 @@ Push 3 → [3, 3]
 Operator '*' → pop 3 and 3 → 3 * 3 = 9 → push → [9]  
 
 Final answer = 9
+
+2. Input:
+tokens = ["4", "13", "5", "/", "+"]
+
+Output:
+6
+
+Explanation:
+Step-by-step explanation
+
+Stack = []
+
+Push 4 → [4]  
+Push 13 → [4, 13]  
+Push 5 → [4, 13, 5]  
+
+Operator '/' → pop 5 and 13 → 13 / 5 = 2.6 → trunc → 2 → push → [4, 2]  
+
+Operator '+' → pop 2 and 4 → 4 + 2 = 6 → push → [6]  
+
+Final answer = 6
 */
