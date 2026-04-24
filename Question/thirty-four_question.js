@@ -75,4 +75,26 @@ Operator '/' → pop 5 and 13 → 13 / 5 = 2.6 → trunc → 2 → push → [4, 
 Operator '+' → pop 2 and 4 → 4 + 2 = 6 → push → [6]  
 
 Final answer = 6
+
+❌ wrong input & output 
+
+3. Input:
+tokens = ["2", "+"]
+
+Output:
+NaN   // incorrect behavior
+
+Explanation:
+
+Stack = []
+
+Push 2 → [2]
+
+Operator '+' → tries to pop two values:
+right = 2  
+left = undefined  
+
+So: undefined + 2 → NaN  
+
+Final result becomes NaN because there are not enough operands.
 */
