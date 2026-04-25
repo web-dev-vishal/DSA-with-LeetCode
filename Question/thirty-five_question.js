@@ -122,5 +122,5 @@ pop()
 → shift() on empty array returns undefined
 
 This is logically incorrect because stack is empty,
-but no error is thrown.
+but no error is thrown
 */
