@@ -78,4 +78,36 @@ Row 2 → heights = [3,1,3,2,2] → max area = 6 ✅
 Row 3 → heights = [4,0,0,3,0] → max area still = 6  
 
 Final answer = 6
+
+2. Input:
+matrix = [
+  ["0","1"],
+  ["1","0"]
+]
+
+Output:
+1
+
+Explanation:
+Step-by-step explanation
+
+Row 0 → heights = [0,1] → max area = 1  
+Row 1 → heights = [1,0] → max area = 1  
+
+Final answer = 1
+
+
+❌ wrong input & output
+
+3. Input:
+matrix = []
+
+Output:
+0
+
+Explanation:
+
+matrix.length = 0 → early return 0
+
+This is not a bug, but an edge case handled correctly.
  */
