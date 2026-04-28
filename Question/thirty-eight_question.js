@@ -58,5 +58,24 @@ function largestRectangle(heights) {
 }
 
 /**
+1. Input:
+matrix = [
+  ["1","0","1","0","0"],
+  ["1","0","1","1","1"],
+  ["1","1","1","1","1"],
+  ["1","0","0","1","0"]
+]
 
+Output:
+6
+
+Explanation:
+Step-by-step explanation
+
+Row 0 → heights = [1,0,1,0,0] → max area = 1  
+Row 1 → heights = [2,0,2,1,1] → max area = 3  
+Row 2 → heights = [3,1,3,2,2] → max area = 6 ✅  
+Row 3 → heights = [4,0,0,3,0] → max area still = 6  
+
+Final answer = 6
  */
